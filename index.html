@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="google-site-verification" content="Q3U2aZvJ3WhrnTFBSmGUGLia8KO5tuusIxt0hNYr61A"/>
+    <title>😻은별리😻 - 🌸방송스케줄🌸</title>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sunflower:300&display=swap" rel="stylesheet">
+    <script src="js/html2canvas.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        @font-face {
+            font-family: 'Ownglyph_StudyHard-Rg';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_StudyHard-Rg.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'GeekbleMalang2WOFF2';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/GeekbleMalang2WOFF2.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'LOTTERIACHAB';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/LOTTERIACHAB.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            .board_box {
+                width: 800px;
+                height: 800px;
+                border: solid 5px #fff;
+                border-radius: 30px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                background: url(/img/background.jpg);
+
+                position: relative;
+                .board_title {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 10px;
+                    & span {
+                        text-align: center;
+                        font-family: 'LOTTERIACHAB';
+                        font-size: 70px;
+                        -webkit-text-stroke-width: 2px;
+                        -webkit-text-stroke-color: #ffffff;
+                        color: #fda090;
+
+                        border-radius: 30px;
+                    }
+                }
+                .board_content {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 15px;
+                    .board_week {
+                        width: 460px;
+                        height: 80px;
+                        padding: 0 20px;
+                        border-radius: 0 30px 30px 0;
+                        font-family: 'LOTTERIACHAB';
+                        font-size: 50px;
+                        display: flex;
+                        align-items: center;
+                        background: rgba(255, 255, 255, 0.7);
+                        backdrop-filter: blur(30px);
+
+                        .schedule_month {
+                            width: 40px;
+                            color: #FDDBBB;
+                            -webkit-text-stroke-width: 2px;
+                            -webkit-text-stroke-color: #cea987;
+                        }
+                        .schedule_info {
+                            width: 300px;
+                            color: #FDDBBB;
+                            -webkit-text-stroke-width: 2px;
+                            -webkit-text-stroke-color: #cea987;
+                            text-align: center;
+                            font-family: 'Ownglyph_StudyHard-Rg';
+                            font-size: 40px;
+                        }
+                        .schedule_time {
+                            width: 120px;
+                            color: #FDDBBB;
+                            -webkit-text-stroke-width: 2px;
+                            -webkit-text-stroke-color: #cea987;
+                            text-align: center;
+                            font-family: 'Ownglyph_StudyHard-Rg';
+                            font-size: 40px;
+                        }
+                    }
+                    .sun {
+                        .schedule_month, .schedule_info, .schedule_time {
+                            color: #CB9DF0;
+                            -webkit-text-stroke-color: #996cbe;
+                        }
+                    }
+                    .sat {
+                        .schedule_month, .schedule_info, .schedule_time {
+                            color: #F0C1E1;
+                            -webkit-text-stroke-color: #be8bae;
+                        }
+                    }
+                }
+                .collage_img_byulee {
+                    position: absolute;
+                    width: 300px;
+                    bottom: 0;
+                    right: 0;
+                }
+            }
+            .control_box {
+                width: 450px;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                gap: 10px;
+                .control_section {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    .month_title {
+                        width: 30px;
+                        font-size: 30px;
+                    }
+                    .input_text {
+                        font-size: 16px;
+                        width: 230px;
+                        height: 40px;
+                    }
+                    .time_set {
+                        font-size: 16px;
+                        width: 80px;
+                        height: 40px;
+                    }
+                    .time_hour {
+                        font-size: 16px;
+                        width: 80px;
+                        height: 40px;
+                    }
+                }
+                .btn_download {
+
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+<!--내용-->
+<main>
+    <div class="board_box" id="schedule">
+        <div class="board_title">
+            <span>은별리 방송스케줄</span>
+        </div>
+        <div class="board_content">
+            <div class="board_week mon">
+                <span class="schedule_month">월</span>
+                <span class="schedule_info mon_result_info"></span>
+                <span class="schedule_time"><span class="mon_result_set">오전</span> <span class="mon_result_hour">1시</span></span>
+            </div>
+            <div class="board_week tue">
+                <span class="schedule_month">화</span>
+                <span class="schedule_info tue_result_info"></span>
+                <span class="schedule_time"><span class="tue_result_set">오전</span> <span class="tue_result_hour">1시</span></span>
+            </div>
+            <div class="board_week wed">
+                <span class="schedule_month">수</span>
+                <span class="schedule_info wed_result_info"></span>
+                <span class="schedule_time"><span class="wed_result_set">오전</span> <span class="wed_result_hour">1시</span></span>
+            </div>
+            <div class="board_week thu">
+                <span class="schedule_month">목</span>
+                <span class="schedule_info thu_result_info"></span>
+                <span class="schedule_time"><span class="thu_result_set">오전</span> <span class="thu_result_hour">1시</span></span>
+            </div>
+            <div class="board_week fri">
+                <span class="schedule_month">금</span>
+                <span class="schedule_info fri_result_info"></span>
+                <span class="schedule_time"><span class="fri_result_set">오전</span> <span class="fri_result_hour">1시</span></span>
+            </div>
+            <div class="board_week sat">
+                <span class="schedule_month">토</span>
+                <span class="schedule_info sat_result_info"></span>
+                <span class="schedule_time"><span class="sat_result_set">오전</span> <span class="sat_result_hour">1시</span></span>
+            </div>
+            <div class="board_week sun">
+                <span class="schedule_month">일</span>
+                <span class="schedule_info sun_result_info"></span>
+                <span class="schedule_time"><span class="sun_result_set">오전</span> <span class="sun_result_hour">1시</span></span>
+            </div>
+        </div>
+        <img src="img/byulee2.png" alt="별리" class="collage_img_byulee"/>
+    </div>
+    <div class="control_box">
+        <div class="control_section">
+            <span class="month_title">월</span>
+            <input class="input_text" type="text" value="" id="mon_content" oninput="changeInputText(1, event)" placeholder="주간 방송 정보를 입력해주세요."/>
+            <select class="time_set" name="오전/오후" id="mon_timeset" onchange="changeTimeSet(1, event)">
+                <option value="오전">오전</option>
+                <option value="오후">오후</option>
+                <option value="휴방">휴방</option>
+            </select>
+            <select class="time_hour" name="시간" id="mon_time" onchange="changeTimeHour(1, event)">
+                <option value="1시">1시</option>
+                <option value="2시">2시</option>
+                <option value="3시">3시</option>
+                <option value="4시">4시</option>
+                <option value="5시">5시</option>
+                <option value="6시">6시</option>
+                <option value="7시">7시</option>
+                <option value="8시">8시</option>
+                <option value="9시">9시</option>
+                <option value="10시">10시</option>
+                <option value="11시">11시</option>
+                <option value="12시">12시</option>
+            </select>
+        </div>
+        <div class="control_section">
+            <span class="month_title">화</span>
+            <input class="input_text" type="text" value="" id="tue_content" oninput="changeInputText(2, event)" placeholder="주간 방송 정보를 입력해주세요."/>
+            <select class="time_set" name="오전/오후" id="tue_timeset" onchange="changeTimeSet(2, event)">
+                <option value="오전">오전</option>
+                <option value="오후">오후</option>
+                <option value="휴방">휴방</option>
+            </select>
+            <select class="time_hour" name="시간" id="tue_time" onchange="changeTimeHour(2, event)">
+                <option value="1시">1시</option>
+                <option value="2시">2시</option>
+                <option value="3시">3시</option>
+                <option value="4시">4시</option>
+                <option value="5시">5시</option>
+                <option value="6시">6시</option>
+                <option value="7시">7시</option>
+                <option value="8시">8시</option>
+                <option value="9시">9시</option>
+                <option value="10시">10시</option>
+                <option value="11시">11시</option>
+                <option value="12시">12시</option>
+            </select>
+        </div>
+        <div class="control_section">
+            <span class="month_title">수</span>
+            <input class="input_text" type="text" value="" id="wed_content" oninput="changeInputText(3, event)" placeholder="주간 방송 정보를 입력해주세요."/>
+            <select class="time_set" name="오전/오후" id="wed_timeset" onchange="changeTimeSet(3, event)">
+                <option value="오전">오전</option>
+                <option value="오후">오후</option>
+                <option value="휴방">휴방</option>
+            </select>
+            <select class="time_hour" name="시간" id="wed_time" onchange="changeTimeHour(3, event)">
+                <option value="1시">1시</option>
+                <option value="2시">2시</option>
+                <option value="3시">3시</option>
+                <option value="4시">4시</option>
+                <option value="5시">5시</option>
+                <option value="6시">6시</option>
+                <option value="7시">7시</option>
+                <option value="8시">8시</option>
+                <option value="9시">9시</option>
+                <option value="10시">10시</option>
+                <option value="11시">11시</option>
+                <option value="12시">12시</option>
+            </select>
+        </div>
+        <div class="control_section">
+            <span class="month_title">목</span>
+            <input class="input_text" type="text" value="" id="thu_content" oninput="changeInputText(4, event)" placeholder="주간 방송 정보를 입력해주세요."/>
+            <select class="time_set" name="오전/오후" id="thu_timeset" onchange="changeTimeSet(4, event)">
+                <option value="오전">오전</option>
+                <option value="오후">오후</option>
+                <option value="휴방">휴방</option>
+            </select>
+            <select class="time_hour" name="시간" id="thu_time" onchange="changeTimeHour(4, event)">
+                <option value="1시">1시</option>
+                <option value="2시">2시</option>
+                <option value="3시">3시</option>
+                <option value="4시">4시</option>
+                <option value="5시">5시</option>
+                <option value="6시">6시</option>
+                <option value="7시">7시</option>
+                <option value="8시">8시</option>
+                <option value="9시">9시</option>
+                <option value="10시">10시</option>
+                <option value="11시">11시</option>
+                <option value="12시">12시</option>
+            </select>
+        </div>
+        <div class="control_section">
+            <span class="month_title">금</span>
+            <input class="input_text" type="text" value="" id="fri_content" oninput="changeInputText(5, event)" placeholder="주간 방송 정보를 입력해주세요."/>
+            <select class="time_set" name="오전/오후" id="fri_timeset" onchange="changeTimeSet(5, event)">
+                <option value="오전">오전</option>
+                <option value="오후">오후</option>
+                <option value="휴방">휴방</option>
+            </select>
+            <select class="time_hour" name="시간" id="fri_time" onchange="changeTimeHour(5, event)">
+                <option value="1시">1시</option>
+                <option value="2시">2시</option>
+                <option value="3시">3시</option>
+                <option value="4시">4시</option>
+                <option value="5시">5시</option>
+                <option value="6시">6시</option>
+                <option value="7시">7시</option>
+                <option value="8시">8시</option>
+                <option value="9시">9시</option>
+                <option value="10시">10시</option>
+                <option value="11시">11시</option>
+                <option value="12시">12시</option>
+            </select>
+        </div>
+        <div class="control_section">
+            <span class="month_title">토</span>
+            <input class="input_text" type="text" value="" id="sat_content" oninput="changeInputText(6, event)" placeholder="주간 방송 정보를 입력해주세요."/>
+            <select class="time_set" name="오전/오후" id="sat_timeset" onchange="changeTimeSet(6, event)">
+                <option value="오전">오전</option>
+                <option value="오후">오후</option>
+                <option value="휴방">휴방</option>
+            </select>
+            <select class="time_hour" name="시간" id="sat_time" onchange="changeTimeHour(6, event)">
+                <option value="1시">1시</option>
+                <option value="2시">2시</option>
+                <option value="3시">3시</option>
+                <option value="4시">4시</option>
+                <option value="5시">5시</option>
+                <option value="6시">6시</option>
+                <option value="7시">7시</option>
+                <option value="8시">8시</option>
+                <option value="9시">9시</option>
+                <option value="10시">10시</option>
+                <option value="11시">11시</option>
+                <option value="12시">12시</option>
+            </select>
+        </div>
+        <div class="control_section">
+            <span class="month_title">일</span>
+            <input class="input_text" type="text" value="" id="sun_content" oninput="changeInputText(7, event)" placeholder="주간 방송 정보를 입력해주세요."/>
+            <select class="time_set" name="오전/오후" id="sun_timeset" onchange="changeTimeSet(7, event)">
+                <option value="오전">오전</option>
+                <option value="오후">오후</option>
+                <option value="휴방">휴방</option>
+            </select>
+            <select class="time_hour" name="시간" id="sun_time" onchange="changeTimeHour(7, event)">
+                <option value="1시">1시</option>
+                <option value="2시">2시</option>
+                <option value="3시">3시</option>
+                <option value="4시">4시</option>
+                <option value="5시">5시</option>
+                <option value="6시">6시</option>
+                <option value="7시">7시</option>
+                <option value="8시">8시</option>
+                <option value="9시">9시</option>
+                <option value="10시">10시</option>
+                <option value="11시">11시</option>
+                <option value="12시">12시</option>
+            </select>
+        </div>
+        <button type="button" class="btn_download">이미지 저장하기</button>
+    </div>
+</main>
+<script>
+    $(function(){
+        $(".btn_download").click(function(e){
+            html2canvas(document.getElementById("schedule")).then(function(canvas) {
+                var el = document.createElement("a")
+                el.href = canvas.toDataURL("image/jpeg")
+                el.download = '방송스케줄.jpg' //다운로드 할 파일명 설정
+                el.click()
+            })
+        })
+    })
+
+    function changeInputText(type, event) {
+        let result
+        switch (type) {
+            case 1:
+                result = document.querySelector(".mon_result_info");
+                result.textContent = event.target.value
+                break
+            case 2:
+                result = document.querySelector(".tue_result_info");
+                result.textContent = event.target.value
+                break
+            case 3:
+                result = document.querySelector(".wed_result_info");
+                result.textContent = event.target.value
+                break
+            case 4:
+                result = document.querySelector(".thu_result_info");
+                result.textContent = event.target.value
+                break
+            case 5:
+                result = document.querySelector(".fri_result_info");
+                result.textContent = event.target.value
+                break
+            case 6:
+                result = document.querySelector(".sat_result_info");
+                result.textContent = event.target.value
+                break
+            case 7:
+                result = document.querySelector(".sun_result_info");
+                result.textContent = event.target.value
+                break;
+            default:
+                break;
+        }
+    }
+
+    function changeTimeSet(type, event) {
+        switch (type) {
+            case 1:
+                document.querySelector(".mon_result_set").textContent = event.target.value
+                if (event.target.value === "휴방") {
+                    document.querySelector(".mon_result_info").textContent = "-"
+                    document.getElementById("mon_content").textContent = "-"
+                    document.querySelector(".mon_result_hour").textContent = ""
+                    document.getElementById("mon_time").disabled = true
+                } else {
+                    document.getElementById("mon_time").disabled = false
+                    document.getElementById("mon_time").value = "1시"
+                    document.querySelector(".mon_result_info").textContent = ""
+                    document.querySelector(".mon_result_hour").textContent = "1시"
+                    document.getElementById("mon_content").textContent = ""
+                }
+                break
+            case 2:
+                document.querySelector(".tue_result_set").textContent = event.target.value
+                if (event.target.value === "휴방") {
+                    document.querySelector(".tue_result_info").textContent = "-"
+                    document.getElementById("tue_content").textContent = "-"
+                    document.querySelector(".tue_result_hour").textContent = ""
+                    document.getElementById("tue_time").disabled = true
+                } else {
+                    document.getElementById("tue_time").disabled = false
+                    document.getElementById("tue_time").value = "1시"
+                    document.querySelector(".tue_result_info").textContent = ""
+                    document.querySelector(".tue_result_hour").textContent = "1시"
+                    document.getElementById("tue_content").textContent = ""
+                }
+                break
+            case 3:
+                document.querySelector(".wed_result_set").textContent = event.target.value
+                if (event.target.value === "휴방") {
+                    document.querySelector(".wed_result_info").textContent = "-"
+                    document.getElementById("wed_content").textContent = "-"
+                    document.querySelector(".wed_result_hour").textContent = ""
+                    document.getElementById("wed_time").disabled = true
+                } else {
+                    document.getElementById("wed_time").disabled = false
+                    document.getElementById("wed_time").value = "1시"
+                    document.querySelector(".wed_result_info").textContent = ""
+                    document.querySelector(".wed_result_hour").textContent = "1시"
+                    document.getElementById("wed_content").textContent = ""
+                }
+                break
+            case 4:
+                document.querySelector(".thu_result_set").textContent = event.target.value
+                if (event.target.value === "휴방") {
+                    document.querySelector(".thu_result_info").textContent = "-"
+                    document.getElementById("thu_content").textContent = "-"
+                    document.querySelector(".thu_result_hour").textContent = ""
+                    document.getElementById("thu_time").disabled = true
+                } else {
+                    document.getElementById("thu_time").disabled = false
+                    document.getElementById("thu_time").value = "1시"
+                    document.querySelector(".thu_result_info").textContent = ""
+                    document.querySelector(".thu_result_hour").textContent = "1시"
+                    document.getElementById("thu_content").textContent = ""
+                }
+                break
+            case 5:
+                document.querySelector(".fri_result_set").textContent = event.target.value
+                if (event.target.value === "휴방") {
+                    document.querySelector(".fri_result_info").textContent = "-"
+                    document.getElementById("fri_content").textContent = "-"
+                    document.querySelector(".fri_result_hour").textContent = ""
+                    document.getElementById("fri_time").disabled = true
+                } else {
+                    document.getElementById("fri_time").disabled = false
+                    document.getElementById("fri_time").value = "1시"
+                    document.querySelector(".fri_result_info").textContent = ""
+                    document.querySelector(".fri_result_hour").textContent = "1시"
+                    document.getElementById("fri_content").textContent = ""
+                }
+                break
+            case 6:
+                document.querySelector(".sat_result_set").textContent = event.target.value
+                if (event.target.value === "휴방") {
+                    document.querySelector(".sat_result_info").textContent = "-"
+                    document.getElementById("sat_content").textContent = "-"
+                    document.querySelector(".sat_result_hour").textContent = ""
+                    document.getElementById("sat_time").disabled = true
+                } else {
+                    document.getElementById("sat_time").disabled = false
+                    document.getElementById("sat_time").value = "1시"
+                    document.querySelector(".sat_result_info").textContent = ""
+                    document.querySelector(".sat_result_hour").textContent = "1시"
+                    document.getElementById("sat_content").textContent = ""
+                }
+                break
+            case 7:
+                document.querySelector(".sun_result_set").textContent = event.target.value
+                if (event.target.value === "휴방") {
+                    document.querySelector(".sun_result_info").textContent = "-"
+                    document.getElementById("sun_content").textContent = "-"
+                    document.querySelector(".sun_result_hour").textContent = ""
+                    document.getElementById("sun_time").disabled = true
+                } else {
+                    document.getElementById("sun_time").disabled = false
+                    document.getElementById("sun_time").value = "1시"
+                    document.querySelector(".sun_result_info").textContent = ""
+                    document.querySelector(".sun_result_hour").textContent = "1시"
+                    document.getElementById("sun_content").textContent = ""
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    function changeTimeHour(type, event) {
+        let result
+        switch (type) {
+            case 1:
+                result = document.querySelector(".mon_result_hour");
+                result.textContent = event.target.value
+                break
+            case 2:
+                result = document.querySelector(".tue_result_hour");
+                result.textContent = event.target.value
+                break
+            case 3:
+                result = document.querySelector(".wed_result_hour");
+                result.textContent = event.target.value
+                break
+            case 4:
+                result = document.querySelector(".thu_result_hour");
+                result.textContent = event.target.value
+                break
+            case 5:
+                result = document.querySelector(".fri_result_hour");
+                result.textContent = event.target.value
+                break
+            case 6:
+                result = document.querySelector(".sat_result_hour");
+                result.textContent = event.target.value
+                break
+            case 7:
+                result = document.querySelector(".sun_result_hour");
+                result.textContent = event.target.value
+                break;
+            default:
+                break;
+        }
+    }
+</script>
+</body>
+</html>
