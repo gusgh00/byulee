@@ -43,7 +43,7 @@
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
-                background: url("./img/background.jpg");
+                background: url("./img/background01.jpg");
                 background-size: cover;
 
                 position: relative;
@@ -59,7 +59,11 @@
                         font-size: 70px;
                         -webkit-text-stroke-width: 2px;
                         -webkit-text-stroke-color: #ffffff;
-                        color: #fda090;
+
+                        background: linear-gradient(#e55856 0%, #11b946 100%);
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        color: transparent;
 
                         border-radius: 30px;
                     }
@@ -78,8 +82,8 @@
                         font-size: 50px;
                         display: flex;
                         align-items: center;
-                        background: rgba(255, 255, 255, 0.7);
-                        backdrop-filter: blur(30px);
+                        background: rgba(255, 255, 255, 0.4);
+                        backdrop-filter: blur(20px);
 
                         .schedule_month {
                             width: 40px;
@@ -106,16 +110,16 @@
                             font-size: 40px;
                         }
                     }
-                    .sun {
+                    .sun, .fri, .wed, .mon {
                         .schedule_month, .schedule_info, .schedule_time {
-                            color: #CB9DF0;
-                            -webkit-text-stroke-color: #996cbe;
+                            color: #e85351;
+                            -webkit-text-stroke-color: #BD3634;
                         }
                     }
-                    .sat {
+                    .sat, .thu, .tue {
                         .schedule_month, .schedule_info, .schedule_time {
-                            color: #F0C1E1;
-                            -webkit-text-stroke-color: #be8bae;
+                            color: #0f8033;
+                            -webkit-text-stroke-color: #034F1B;
                         }
                     }
                 }
@@ -208,7 +212,7 @@
                 <span class="schedule_time"><span class="sun_result_set">오전</span> <span class="sun_result_hour">1시</span></span>
             </div>
         </div>
-        <img src="img/byulee2.png" alt="별리" class="collage_img_byulee"/>
+        <img src="img/byulee01.png" alt="별리" class="collage_img_byulee"/>
     </div>
     <div class="control_box">
         <div class="control_section">
