@@ -205,6 +205,9 @@ export default function Home() {
                   <Image src={selectedAvatar} alt="avatar" className="avatar_img"/>
                 </div>
               </div>
+              <div className="watermark_section">
+                <span className="HASD-500 default_text">Created by HYNO. Source License : Designed By Freepik.</span>
+              </div>
             </div>
           </div>
           <div className="schedule_control">

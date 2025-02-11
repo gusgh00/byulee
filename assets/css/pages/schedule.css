@@ -16,6 +16,7 @@
         justify-content: center;
 
         .image_section {
+            position: relative;
             width: 660px;
             height: 660px;
             box-shadow:  5px 5px 10px #a8a8a8;
@@ -85,6 +86,16 @@
                 }
             }
 
+            .watermark_section {
+                position: absolute;
+                bottom: 0;
+                left: 5px;
+                & span {
+                    font-size: 10px;
+                    font-weight: 700;
+                }
+            }
+
             &.schedule_01 {
                 background: url("../../img/background/schedule01.png");
                 .content_section {
@@ -109,7 +120,6 @@
                     }
                 }
             }
-
             &.schedule_03 {
                 background: url("../../img/background/schedule03.png");
                 .content_section {
