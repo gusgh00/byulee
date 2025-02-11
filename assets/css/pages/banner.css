@@ -1,0 +1,221 @@
+.banner_main {
+    width: 100%;
+    display: flex;
+    margin-top: 200px;
+
+    .banner_image {
+        width: 780px;
+        height: 320px;
+
+        background: rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(30);
+        border-radius: 30px 0 0 30px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .image_section {
+            position: relative;
+            width: 720px;
+            height: 150px;
+            box-shadow:  5px 5px 10px #a8a8a8;
+            .content_section {
+                width: 720px;
+                height: 150px;
+                display: flex;
+                .banner_section {
+                    width: 280px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    .banner_text {
+                        font-size: 50px;
+                    }
+                }
+                .avatar_section {
+                    width: 160px;
+                    height: 150px;
+                }
+            }
+
+            .watermark_section {
+                position: absolute;
+                bottom: 0;
+                left: 5px;
+                & span {
+                    font-size: 8px;
+                    font-weight: 700;
+                }
+            }
+
+            &.banner_01 {
+                background: url("../../img/background/banner01.png");
+                .content_section {
+                    .banner_section {
+                        .banner_text {
+                            color: #d6c7f1;
+                            -webkit-text-stroke-width: 1px;
+                            -webkit-text-stroke-color: #fff;
+                        }
+                    }
+                }
+            }
+            &.banner_02 {
+                background: url("../../img/background/banner02.png");
+                .content_section {
+                    .banner_section {
+                        .banner_text {
+                            color: #cad4ef;
+                            -webkit-text-stroke-width: 1px;
+                            -webkit-text-stroke-color: #fff;
+                        }
+                    }
+                }
+            }
+            &.banner_03 {
+                background: url("../../img/background/banner03.png");
+                .content_section {
+                    .banner_section {
+                        .banner_text {
+                            color: #f0834b;
+                            -webkit-text-stroke-width: 1px;
+                            -webkit-text-stroke-color: #fff;
+                        }
+                    }
+                }
+            }
+            &.banner_04 {
+                background: url("../../img/background/banner04.png");
+                .content_section {
+                    .banner_section {
+                        .banner_text {
+                            color: #cfb7a3;
+                            -webkit-text-stroke-width: 1px;
+                            -webkit-text-stroke-color: #fff;
+                        }
+                    }
+                }
+            }
+            &.banner_05 {
+                background: url("../../img/background/banner05.png");
+                .content_section {
+                    .banner_section {
+                        .banner_text {
+                            color: #c8e2d6;
+                            -webkit-text-stroke-width: 1px;
+                            -webkit-text-stroke-color: #fff;
+                        }
+                    }
+                }
+            }
+            &.banner_06 {
+                background: url("../../img/background/banner06.png");
+                .content_section {
+                    .banner_section {
+                        .banner_text {
+                            color: #e1c1d2;
+                            -webkit-text-stroke-width: 1px;
+                            -webkit-text-stroke-color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .banner_control {
+        width: 520px;
+        height: 320px;
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(30);
+        border-radius: 0 30px 30px 0;
+
+        box-shadow:  44px 0 70px #f0f0f0;
+        /*0 -44px 70px #ffffff;*/
+        .top_control {
+            width: 490px;
+            margin: 50px auto 0;
+            display: flex;
+            justify-content: end;
+            .btn_control {
+                display: flex;
+                justify-content: right;
+                gap: 20px;
+
+                .reset_btn, .save_btn {
+                    background: #fff;
+                    height: 40px;
+                    border-radius: 20px;
+                    padding: 0 20px;
+
+                    box-shadow:  4px 4px 14px #ededed,
+                    -4px -4px 14px #ffffff;
+
+                    display: flex;
+                    align-items: center;
+
+                    font-size: 16px;
+
+                    &:hover {
+                        color: #ed6496;
+                    }
+                }
+            }
+        }
+        .name_control {
+            display: flex;
+            flex-direction: column;
+            width: 490px;
+            gap: 2px;
+            margin: 30px auto 30px;
+            .input_title {
+                font-size: 12px;
+            }
+            .control_input {
+                height: 40px;
+                padding: 0 10px;
+                font-size: 20px;
+                outline: none;
+
+                background: #fff;
+                border-radius: 20px;
+                box-shadow:  4px 4px 14px #ededed,
+                -4px -4px 14px #ffffff;
+            }
+        }
+        .img_control {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            width: 490px;
+            margin: 0 auto 0;
+
+            .control_section {
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+                .control_name {
+                    font-size: 12px;
+                }
+                .control_input {
+                    background: #fff;
+                    height: 40px;
+                    border-radius: 20px;
+
+                    box-shadow:  4px 4px 14px #ededed,
+                    -4px -4px 14px #ffffff;
+
+                    display: flex;
+                    align-items: center;
+
+                    font-size: 16px;
+
+                    padding: 0 10px;
+                    border-right: 10px solid transparent;
+
+                    outline: none;
+                }
+            }
+        }
+    }
+}

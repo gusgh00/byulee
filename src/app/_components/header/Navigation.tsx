@@ -16,7 +16,7 @@ const Navigation = () => {
                 </Link>
                 <Link href={"/banner"}>
                     <div>
-                        <span className={usePathname() === "/cafe" ? "HADM navigation_text navigation_text_selected" : "HADM navigation_text"}>하단 배너 (미정)</span>
+                        <span className={usePathname() === "/banner" ? "HADM navigation_text navigation_text_selected" : "HADM navigation_text"}>하단 배너</span>
                     </div>
                 </Link>
                 <Link href={"/cafe"}>
