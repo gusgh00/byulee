@@ -12,13 +12,6 @@
 }
 
 @font-face {
-    font-family: 'GumiRomanceTTF';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/GumiRomanceTTF.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
     font-family: 'ONE-Mobile-POP';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
     font-weight: normal;
@@ -26,35 +19,42 @@
 }
 
 @font-face {
-    font-family: 'MangoByeolbyeol';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/MangoByeolbyeol.woff2') format('woff2');
+    font-family: 'CookieRun-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Bold00.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Binggrae';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 .HADM {
-    font-family: 'HakgyoansimDunggeunmisoTTF-B';
-}
-
-.GUMI {
-    font-family: 'GumiRomanceTTF';
+    font-family: 'HakgyoansimDunggeunmisoTTF-B', sans-serif;
 }
 
 .OPOP {
-    font-family: 'ONE-Mobile-POP';
+    font-family: 'ONE-Mobile-POP', sans-serif;
 }
 
-.MANG {
-    font-family: 'MangoByeolbyeol';
+.COOR {
+    font-family: 'CookieRun-Bold', sans-serif;
+}
+
+.BING {
+    font-family: 'Binggrae', sans-serif;
 }
 
 .HASD-300 {
-    font-family: 'HakgyoansimSantteutdotumL';
+    font-family: 'HakgyoansimSantteutdotumL', sans-serif;
     font-weight: 300;
 }
 
 .HASD-500 {
-    font-family: 'HakgyoansimSantteutdotumL';
+    font-family: 'HakgyoansimSantteutdotumL', sans-serif;
     font-weight: 500;
 }
 

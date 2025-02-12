@@ -318,6 +318,8 @@ export default function Home() {
                 <select className={"default_text control_input " + selectedFont} onChange={(event) => handleChangeFont(event)} value={selectedFont}>
                   <option value={"HADM"} className="HADM">폰트1</option>
                   <option value={"OPOP"} className="OPOP">폰트2</option>
+                  <option value={"COOR"} className="COOR">폰트3</option>
+                  <option value={"BING"} className="BING">폰트4</option>
                 </select>
               </div>
             </div>
