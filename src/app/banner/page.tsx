@@ -56,6 +56,15 @@ export default function Banner() {
         setSelectedFont(event.target.value)
     }
 
+    const changeValueNickname = (value: string) => {
+        if (value.length > 5) {
+            alert("시청자 닉네임은 최대 5자 입니다.")
+            setValueNickname(value.substring(0, 5))
+        } else {
+            setValueNickname(value)
+        }
+    }
+
     return (
         <div id="main_content">
             <div className="main_inner">
@@ -95,8 +104,7 @@ export default function Banner() {
                                 type="text"
                                 className="HASD-500 default_text control_input"
                                 value={valueNickname}
-                                maxLength={5}
-                                onChange={(event) => {setValueNickname(event.target.value)}}
+                                onChange={(event) => {changeValueNickname(event.target.value)}}
                                 placeholder="시청자 닉네임을 입력해주세요."
                             />
                         </div>
