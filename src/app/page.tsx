@@ -9,9 +9,7 @@ import Byulee02 from "@img/avatar/byulee02.png"
 import Byulee03 from "@img/avatar/byulee03.png"
 import Byulee04 from "@img/avatar/byulee04.png"
 import dayjs from "dayjs";
-
 import "react-datepicker/dist/react-datepicker.css";
-import {addDays} from "date-fns";
 
 export default function Home() {
   interface weekArrInterface {
@@ -80,12 +78,7 @@ export default function Home() {
   const [selectedTheme, setSelectedTheme] = useState("schedule_01")
   const [selectedFont, setSelectedFont] = useState("HADM")
 
-  const [valueSMonth, setValueSMonth] = useState(12)
-  const [valueSDate, setValueSDate] = useState(30)
-  const [valueEMonth, setValueEMonth] = useState(1)
-  const [valueEDate, setValueEDate] = useState(5)
-
-  const [dateRange, setDateRange] = useState<Date[] | null[]>([null, null]);
+  const [dateRange, setDateRange] = useState<(Date | null)[]>([null, null]);
   const [startDate, endDate] = dateRange
 
   const changeWeekContent = (value: string, index: number) => {
@@ -230,37 +223,6 @@ export default function Home() {
           <div className="schedule_control">
             <div className="top_control">
               <div className="date_control">
-                {/*<input*/}
-                {/*    type="text"*/}
-                {/*    className="HASD-500 default_text control_input"*/}
-                {/*    value={valueSMonth}*/}
-                {/*    onChange={(event) => {setValueSMonth(Number(event.target.value))}}*/}
-                {/*    placeholder="월"*/}
-                {/*/>*/}
-                {/*{"/"}*/}
-                {/*<input*/}
-                {/*    type="text"*/}
-                {/*    className="HASD-500 default_text control_input"*/}
-                {/*    value={valueSDate}*/}
-                {/*    onChange={(event) => {setValueSDate(Number(event.target.value))}}*/}
-                {/*    placeholder="일"*/}
-                {/*/>*/}
-                {/*{"~"}*/}
-                {/*<input*/}
-                {/*    type="text"*/}
-                {/*    className="HASD-500 default_text control_input"*/}
-                {/*    value={valueEMonth}*/}
-                {/*    onChange={(event) => {setValueEMonth(Number(event.target.value))}}*/}
-                {/*    placeholder="월"*/}
-                {/*/>*/}
-                {/*{"/"}*/}
-                {/*<input*/}
-                {/*    type="text"*/}
-                {/*    className="HASD-500 default_text control_input"*/}
-                {/*    value={valueEDate}*/}
-                {/*    onChange={(event) => {setValueEDate(Number(event.target.value))}}*/}
-                {/*    placeholder="일"*/}
-                {/*/>*/}
                 <DatePicker
                     className="HASD-500 default_text control_input"
                     selectsRange
@@ -268,7 +230,7 @@ export default function Home() {
                     endDate={endDate}
                     minDate={new Date()}
                     dateFormat="M/d"
-                    onChange={(update) => {
+                    onChange={(update: (Date | null)[]) => {
                       setDateRange(update);
                     }}
                 />
