@@ -72,7 +72,7 @@ export default function Home() {
 
   const [weekData, setWeekData] = useState<weekArrInterface[]>(weekArr)
   const [selectedAvatarIdx, setSelectedAvatarIdx] = useState(0)
-  const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(Byulee00)
+  const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(Byulee01)
   const [selectedTheme, setSelectedTheme] = useState("schedule_01")
   const [selectedFont, setSelectedFont] = useState("HADM")
 
@@ -135,6 +135,22 @@ export default function Home() {
           link.href = dataUrl
           link.click()
         })
+  }
+
+  const clearScheduleImage = () => {
+    setWeekData(weekArr)
+    setSelectedAvatarIdx(0)
+    setSelectedAvatar(Byulee01)
+    setSelectedTheme("schedule_01")
+    setSelectedFont("HADM")
+
+    const day = dayjs().startOf('week')
+    const startDate = day.add(1, "day").toDate()
+    const endDate = day.add(7, "day").toDate()
+    setValueSMonth(Number(startDate.getMonth() + 1))
+    setValueSDate(Number(startDate.getDate()))
+    setValueEMonth(Number(endDate.getMonth() + 1))
+    setValueEDate(Number(endDate.getDate()))
   }
 
   const handleChangeAvatar = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -246,7 +262,7 @@ export default function Home() {
                 />
               </div>
               <div className="btn_control">
-                <button className="HADM default_text reset_btn" onClick={() => setWeekData(weekArr)}>
+                <button className="HADM default_text reset_btn" onClick={() => clearScheduleImage()}>
                   초기화
                 </button>
                 <button className="HADM default_text save_btn" onClick={() => saveScheduleImage()}>
@@ -270,6 +286,8 @@ export default function Home() {
                       <option value={1}>오후</option>
                     </select>
                     <select className="HASD-500 default_text control_input" onChange={(event) => handleChangeTime(event, index)} value={item.time} disabled={item.rest_status}>
+                      {item.am_or_pm === 0 ? <option value={12}>Ⓜ️12시</option> : null}
+                      {item.am_or_pm === 1 ? <option value={2}>Ⓜ️2시</option> : null}
                       <option value={1}>1시</option>
                       <option value={2}>2시</option>
                       <option value={3}>3시</option>
@@ -292,7 +310,6 @@ export default function Home() {
               <div className="control_section">
                 <span className="HADM default_text control_name">아바타</span>
                 <select className="HADM default_text control_input" onChange={(event) => handleChangeAvatar(event)} value={selectedAvatarIdx}>
-                  <option value={0}>-</option>
                   <option value={1}>별리1</option>
                   <option value={2}>별리2</option>
                   <option value={3}>별리3</option>

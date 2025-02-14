@@ -5,6 +5,7 @@ import * as htmlToImage from 'html-to-image';
 import Byulee01 from "@img/avatar/avatar01.png"
 import Byulee02 from "@img/avatar/avatar02.png"
 import Byulee03 from "@img/avatar/avatar03.png"
+import dayjs from "dayjs";
 
 export default function Banner() {
     const [selectedAvatarIdx, setSelectedAvatarIdx] = useState(0)
@@ -28,6 +29,14 @@ export default function Banner() {
                 link.href = dataUrl
                 link.click()
             })
+    }
+
+    const clearScheduleImage = () => {
+        setValueNickname("")
+        setSelectedAvatarIdx(0)
+        setSelectedAvatar(Byulee01)
+        setSelectedTheme("banner_01")
+        setSelectedFont("HADM")
     }
 
     const handleChangeAvatar = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -90,7 +99,7 @@ export default function Banner() {
                     <div className="banner_control">
                         <div className="top_control">
                             <div className="btn_control">
-                                <button className="HADM default_text reset_btn" onClick={() => setValueNickname("")}>
+                                <button className="HADM default_text reset_btn" onClick={() => clearScheduleImage()}>
                                     초기화
                                 </button>
                                 <button className="HADM default_text save_btn" onClick={() => saveBannerImage()}>
@@ -105,7 +114,7 @@ export default function Banner() {
                                 className="HASD-500 default_text control_input"
                                 value={valueNickname}
                                 onChange={(event) => {changeValueNickname(event.target.value)}}
-                                placeholder="시청자 닉네임을 입력해주세요."
+                                placeholder="시청자 닉네임을 입력해주세요. (1 ~ 5자)"
                             />
                         </div>
                         <div className="img_control">
