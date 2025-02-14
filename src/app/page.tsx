@@ -2,12 +2,16 @@
 import Image, {StaticImageData} from "next/image";
 import {ChangeEvent, useEffect, useState} from "react";
 import * as htmlToImage from 'html-to-image';
+import DatePicker from "react-datepicker";
 import Byulee00 from "@img/avatar/byulee00.png"
 import Byulee01 from "@img/avatar/byulee01.png"
 import Byulee02 from "@img/avatar/byulee02.png"
 import Byulee03 from "@img/avatar/byulee03.png"
 import Byulee04 from "@img/avatar/byulee04.png"
 import dayjs from "dayjs";
+
+import "react-datepicker/dist/react-datepicker.css";
+import {addDays} from "date-fns";
 
 export default function Home() {
   interface weekArrInterface {
@@ -81,6 +85,9 @@ export default function Home() {
   const [valueEMonth, setValueEMonth] = useState(1)
   const [valueEDate, setValueEDate] = useState(5)
 
+  const [dateRange, setDateRange] = useState<Date[] | null[]>([null, null]);
+  const [startDate, endDate] = dateRange
+
   const changeWeekContent = (value: string, index: number) => {
     setWeekData(weekData.map((item, idx: number) => {
       if (idx === index) {
@@ -145,12 +152,9 @@ export default function Home() {
     setSelectedFont("HADM")
 
     const day = dayjs().startOf('week')
-    const startDate = day.add(1, "day").toDate()
-    const endDate = day.add(7, "day").toDate()
-    setValueSMonth(Number(startDate.getMonth() + 1))
-    setValueSDate(Number(startDate.getDate()))
-    setValueEMonth(Number(endDate.getMonth() + 1))
-    setValueEDate(Number(endDate.getDate()))
+    const tempStartDate = day.add(1, "day").toDate()
+    const tempEndDate = day.add(7, "day").toDate()
+    setDateRange([tempStartDate, tempEndDate])
   }
 
   const handleChangeAvatar = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -187,12 +191,9 @@ export default function Home() {
 
   useEffect(() => {
     const day = dayjs().startOf('week')
-    const startDate = day.add(1, "day").toDate()
-    const endDate = day.add(7, "day").toDate()
-    setValueSMonth(Number(startDate.getMonth() + 1))
-    setValueSDate(Number(startDate.getDate()))
-    setValueEMonth(Number(endDate.getMonth() + 1))
-    setValueEDate(Number(endDate.getDate()))
+    const tempStartDate = day.add(1, "day").toDate()
+    const tempEndDate = day.add(7, "day").toDate()
+    setDateRange([tempStartDate, tempEndDate])
   }, []);
 
   return (
@@ -216,7 +217,7 @@ export default function Home() {
                 </div>
                 <div className="avatar_section">
                   <div className="date_section">
-                    <span className={"default_text week_date " + selectedFont}>{valueSMonth + "/" + valueSDate +  "~" +  valueEMonth + "/" + valueEDate}</span>
+                    <span className={"default_text week_date " + selectedFont}>{dayjs(startDate).format("M/D") + "~" + dayjs(endDate).format("M/D")}</span>
                   </div>
                   <Image src={selectedAvatar} alt="avatar" className="avatar_img"/>
                 </div>
@@ -229,36 +230,47 @@ export default function Home() {
           <div className="schedule_control">
             <div className="top_control">
               <div className="date_control">
-                <input
-                    type="text"
+                {/*<input*/}
+                {/*    type="text"*/}
+                {/*    className="HASD-500 default_text control_input"*/}
+                {/*    value={valueSMonth}*/}
+                {/*    onChange={(event) => {setValueSMonth(Number(event.target.value))}}*/}
+                {/*    placeholder="월"*/}
+                {/*/>*/}
+                {/*{"/"}*/}
+                {/*<input*/}
+                {/*    type="text"*/}
+                {/*    className="HASD-500 default_text control_input"*/}
+                {/*    value={valueSDate}*/}
+                {/*    onChange={(event) => {setValueSDate(Number(event.target.value))}}*/}
+                {/*    placeholder="일"*/}
+                {/*/>*/}
+                {/*{"~"}*/}
+                {/*<input*/}
+                {/*    type="text"*/}
+                {/*    className="HASD-500 default_text control_input"*/}
+                {/*    value={valueEMonth}*/}
+                {/*    onChange={(event) => {setValueEMonth(Number(event.target.value))}}*/}
+                {/*    placeholder="월"*/}
+                {/*/>*/}
+                {/*{"/"}*/}
+                {/*<input*/}
+                {/*    type="text"*/}
+                {/*    className="HASD-500 default_text control_input"*/}
+                {/*    value={valueEDate}*/}
+                {/*    onChange={(event) => {setValueEDate(Number(event.target.value))}}*/}
+                {/*    placeholder="일"*/}
+                {/*/>*/}
+                <DatePicker
                     className="HASD-500 default_text control_input"
-                    value={valueSMonth}
-                    onChange={(event) => {setValueSMonth(Number(event.target.value))}}
-                    placeholder="월"
-                />
-                {"/"}
-                <input
-                    type="text"
-                    className="HASD-500 default_text control_input"
-                    value={valueSDate}
-                    onChange={(event) => {setValueSDate(Number(event.target.value))}}
-                    placeholder="일"
-                />
-                {"~"}
-                <input
-                    type="text"
-                    className="HASD-500 default_text control_input"
-                    value={valueEMonth}
-                    onChange={(event) => {setValueEMonth(Number(event.target.value))}}
-                    placeholder="월"
-                />
-                {"/"}
-                <input
-                    type="text"
-                    className="HASD-500 default_text control_input"
-                    value={valueEDate}
-                    onChange={(event) => {setValueEDate(Number(event.target.value))}}
-                    placeholder="일"
+                    selectsRange
+                    startDate={startDate}
+                    endDate={endDate}
+                    minDate={new Date()}
+                    dateFormat="M/d"
+                    onChange={(update) => {
+                      setDateRange(update);
+                    }}
                 />
               </div>
               <div className="btn_control">
