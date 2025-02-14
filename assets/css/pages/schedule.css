@@ -294,8 +294,8 @@
 
         .img_control {
             display: flex;
-            justify-content: space-between;
-            gap: 20px;
+            justify-content: right;
+            gap: 40px;
             width: 550px;
             margin: 0 auto 0;
 
