@@ -11,6 +11,8 @@ import Byulee04 from "@img/avatar/byulee04.png"
 import dayjs from "dayjs";
 import "react-datepicker/dist/react-datepicker.css";
 import {FaRandom} from "react-icons/fa";
+import {useCookies} from "react-cookie";
+import {MdCloudDownload} from "react-icons/md";
 
 export default function Home() {
   interface weekArrInterface {
@@ -83,8 +85,10 @@ export default function Home() {
   const avatarCnt = 4
   const themeCnt = 7
 
-  const [dateRange, setDateRange] = useState<(Date | null)[]>([null, null]);
+  const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([null, null]);
   const [startDate, endDate] = dateRange
+
+  const [cookies, setCookie] = useCookies(['weeks']);
 
   const changeWeekContent = (value: string, index: number) => {
     setWeekData(weekData.map((item, idx: number) => {
@@ -133,6 +137,8 @@ export default function Home() {
       return
     }
 
+    setImageCookie()
+
     htmlToImage.toPng(node, {includeQueryParams: true})
         .then((dataUrl) => {
           const link = document.createElement('a')
@@ -140,6 +146,14 @@ export default function Home() {
           link.href = dataUrl
           link.click()
         })
+  }
+
+  const setImageCookie = () => {
+    setCookie('weeks', JSON.stringify(weekData), { maxAge: 60 * 60 * 24 * 14 })
+  }
+
+  const getImageCookie = () => {
+    setWeekData(cookies.weeks)
   }
 
   const clearScheduleImage = () => {
@@ -320,6 +334,12 @@ export default function Home() {
                   </select>
                 </div>
               </div>
+            </div>
+            <div className="img_control">
+              <button className="font_01 default_text cookie_btn" onClick={() => getImageCookie()}>
+                <MdCloudDownload className="cookie_icon"/>
+                저장 된 일정
+              </button>
             </div>
           </div>
         </div>
