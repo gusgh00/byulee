@@ -1,8 +1,7 @@
 #main_content {
     padding-top: 64px;
     height: 100vh;
-    background: url("../../img/etc/painting_background.png");
-    background-size: cover;
+    background: #f8f8f8;
 }
 
 .main_inner {

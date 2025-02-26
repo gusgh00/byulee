@@ -8,8 +8,6 @@
         position: relative;
         width: 100%;
         background: #fff;
-        box-shadow:  -4px -4px 8px #bfbfbf,
-        4px 4px 8px #ffffff;
 
         .inner_section {
             width: 1260px;
