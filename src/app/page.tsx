@@ -338,7 +338,7 @@ export default function Home() {
             <div className="img_control">
               <button className="font_01 default_text cookie_btn" onClick={() => getImageCookie()}>
                 <MdCloudDownload className="cookie_icon"/>
-                저장 된 일정
+                저장된 일정
               </button>
             </div>
           </div>
