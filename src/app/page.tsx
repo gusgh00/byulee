@@ -256,7 +256,7 @@ export default function Home() {
             <div className="top_control">
               <div className="date_control">
                 <DatePicker
-                    className="HASD-500 default_text control_input"
+                    className="font_01 default_text control_input"
                     selectsRange
                     startDate={startDate}
                     endDate={endDate}
