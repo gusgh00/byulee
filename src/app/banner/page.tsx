@@ -5,13 +5,17 @@ import * as htmlToImage from 'html-to-image';
 import Byulee01 from "@img/avatar/avatar01.png"
 import Byulee02 from "@img/avatar/avatar02.png"
 import Byulee03 from "@img/avatar/avatar03.png"
-import dayjs from "dayjs";
+import {FaRandom} from "react-icons/fa";
 
 export default function Banner() {
-    const [selectedAvatarIdx, setSelectedAvatarIdx] = useState(0)
+    const [selectedAvatarIdx, setSelectedAvatarIdx] = useState(1)
     const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(Byulee01)
     const [selectedTheme, setSelectedTheme] = useState("banner_01")
-    const [selectedFont, setSelectedFont] = useState("HADM")
+    const [selectedFont, setSelectedFont] = useState("font_01")
+
+    const fontCnt = 4
+    const avatarCnt = 3
+    const themeCnt = 6
 
     const [valueNickname, setValueNickname] = useState("")
 
@@ -36,7 +40,7 @@ export default function Banner() {
         setSelectedAvatarIdx(0)
         setSelectedAvatar(Byulee01)
         setSelectedTheme("banner_01")
-        setSelectedFont("HADM")
+        setSelectedFont("font_01")
     }
 
     const handleChangeAvatar = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -74,6 +78,35 @@ export default function Banner() {
         }
     }
 
+    const changeRandomImage = () => {
+        const avatarIdx = rand(avatarCnt);
+        setSelectedTheme("banner_0" + rand(themeCnt))
+        setSelectedFont("font_0" + rand(fontCnt))
+        setSelectedAvatarIdx(avatarIdx)
+        switchAvatar(avatarIdx)
+    }
+
+    const rand = (num: number) => {
+        return Math.floor(Math.random() * (num - 1 + 1)) + 1
+    }
+
+    const switchAvatar = (num: Number) => {
+        switch (num) {
+            case 1:
+                setSelectedAvatar(Byulee01)
+                return
+            case 2:
+                setSelectedAvatar(Byulee02)
+                return
+            case 3:
+                setSelectedAvatar(Byulee03)
+                return
+            default:
+                setSelectedAvatar(Byulee01)
+                return
+        }
+    }
+
     return (
         <div id="main_content">
             <div className="main_inner">
@@ -99,16 +132,16 @@ export default function Banner() {
                     <div className="banner_control">
                         <div className="top_control">
                             <div className="btn_control">
-                                <button className="HADM default_text reset_btn" onClick={() => clearScheduleImage()}>
+                                <button className="font_01 default_text reset_btn" onClick={() => clearScheduleImage()}>
                                     초기화
                                 </button>
-                                <button className="HADM default_text save_btn" onClick={() => saveBannerImage()}>
+                                <button className="font_01 default_text save_btn" onClick={() => saveBannerImage()}>
                                     저장하기
                                 </button>
                             </div>
                         </div>
                         <div className="name_control">
-                            <span className="HADM default_text input_title">시청자 닉네임</span>
+                            <span className="font_01 default_text input_title">시청자 닉네임</span>
                             <input
                                 type="text"
                                 className="HASD-500 default_text control_input"
@@ -118,35 +151,37 @@ export default function Banner() {
                             />
                         </div>
                         <div className="img_control">
-                            <div className="control_section">
-                                <span className="HADM default_text control_name">아바타</span>
-                                <select className="HADM default_text control_input" onChange={(event) => handleChangeAvatar(event)} value={selectedAvatarIdx}>
-                                    <option value={1}>별리1</option>
-                                    <option value={2}>별리2</option>
-                                    <option value={3}>별리3</option>
-                                </select>
-                            </div>
+                            <button className="font_01 default_text random_btn" onClick={() => changeRandomImage()}>
+                                <FaRandom className="random_icon"/>
+                                랜덤
+                            </button>
+                            <div className="select_section">
+                                <div className="control_section">
+                                    <span className="font_01 default_text control_name">아바타</span>
+                                    <select className="font_01 default_text control_input" onChange={(event) => handleChangeAvatar(event)} value={selectedAvatarIdx}>
+                                        {[...Array(avatarCnt)].map((item, index) => (
+                                            <option key={index} value={index + 1}>{"별리" + (index + 1)}</option>
+                                        ))}
+                                    </select>
+                                </div>
 
-                            <div className="control_section">
-                                <span className="HADM default_text control_name">테마</span>
-                                <select className="HADM default_text control_input" onChange={(event) => handleChangeTheme(event)} value={selectedTheme}>
-                                    <option value={"banner_01"}>테마1</option>
-                                    <option value={"banner_02"}>테마2</option>
-                                    <option value={"banner_03"}>테마3</option>
-                                    <option value={"banner_04"}>테마4</option>
-                                    <option value={"banner_05"}>테마5</option>
-                                    <option value={"banner_06"}>테마6</option>
-                                </select>
-                            </div>
+                                <div className="control_section">
+                                    <span className="font_01 default_text control_name">테마</span>
+                                    <select className="font_01 default_text control_input" onChange={(event) => handleChangeTheme(event)} value={selectedTheme}>
+                                        {[...Array(themeCnt)].map((item, index) => (
+                                            <option key={index} value={"banner_0" + (index + 1)}>{"테마" + (index + 1)}</option>
+                                        ))}
+                                    </select>
+                                </div>
 
-                            <div className="control_section">
-                                <span className="HADM default_text control_name">폰트</span>
-                                <select className={"default_text control_input " + selectedFont} onChange={(event) => handleChangeFont(event)} value={selectedFont}>
-                                    <option value={"HADM"} className="HADM">폰트1</option>
-                                    <option value={"OPOP"} className="OPOP">폰트2</option>
-                                    <option value={"COOR"} className="COOR">폰트3</option>
-                                    <option value={"BING"} className="BING">폰트4</option>
-                                </select>
+                                <div className="control_section">
+                                    <span className="font_01 default_text control_name">폰트</span>
+                                    <select className={"default_text control_input " + selectedFont} onChange={(event) => handleChangeFont(event)} value={selectedFont}>
+                                        {[...Array(fontCnt)].map((item, index) => (
+                                            <option key={index} value={"font_0" + (index + 1)} className={"font_0" + (index + 1)}>{"폰트" + (index + 1)}</option>
+                                        ))}
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>

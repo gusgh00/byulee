@@ -10,6 +10,7 @@ import Byulee03 from "@img/avatar/byulee03.png"
 import Byulee04 from "@img/avatar/byulee04.png"
 import dayjs from "dayjs";
 import "react-datepicker/dist/react-datepicker.css";
+import {FaRandom} from "react-icons/fa";
 
 export default function Home() {
   interface weekArrInterface {
@@ -73,10 +74,14 @@ export default function Home() {
   ]
 
   const [weekData, setWeekData] = useState<weekArrInterface[]>(weekArr)
-  const [selectedAvatarIdx, setSelectedAvatarIdx] = useState(0)
+  const [selectedAvatarIdx, setSelectedAvatarIdx] = useState(1)
   const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(Byulee01)
   const [selectedTheme, setSelectedTheme] = useState("schedule_01")
-  const [selectedFont, setSelectedFont] = useState("HADM")
+  const [selectedFont, setSelectedFont] = useState("font_01")
+
+  const fontCnt = 4
+  const avatarCnt = 4
+  const themeCnt = 7
 
   const [dateRange, setDateRange] = useState<(Date | null)[]>([null, null]);
   const [startDate, endDate] = dateRange
@@ -142,7 +147,7 @@ export default function Home() {
     setSelectedAvatarIdx(0)
     setSelectedAvatar(Byulee01)
     setSelectedTheme("schedule_01")
-    setSelectedFont("HADM")
+    setSelectedFont("font_01")
 
     const day = dayjs().startOf('week')
     const tempStartDate = day.add(1, "day").toDate()
@@ -152,10 +157,38 @@ export default function Home() {
 
   const handleChangeAvatar = (event: ChangeEvent<HTMLSelectElement>) => {
     setSelectedAvatarIdx(Number(event.target.value))
-    switch (Number(event.target.value)) {
-      case 0:
-        setSelectedAvatar(Byulee00)
-        return
+    switchAvatar(Number(event.target.value))
+  }
+
+  const handleChangeTheme = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedTheme(event.target.value)
+  }
+
+  const handleChangeFont = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedFont(event.target.value)
+  }
+
+  useEffect(() => {
+    const day = dayjs().startOf('week')
+    const tempStartDate = day.add(1, "day").toDate()
+    const tempEndDate = day.add(7, "day").toDate()
+    setDateRange([tempStartDate, tempEndDate])
+  }, []);
+
+  const changeRandomImage = () => {
+    const avatarIdx = rand(avatarCnt);
+    setSelectedTheme("schedule_0" + rand(themeCnt))
+    setSelectedFont("font_0" + rand(fontCnt))
+    setSelectedAvatarIdx(avatarIdx)
+    switchAvatar(avatarIdx)
+  }
+
+  const rand = (num: number) => {
+    return Math.floor(Math.random() * (num - 1 + 1)) + 1
+  }
+
+  const switchAvatar = (num: Number) => {
+    switch (num) {
       case 1:
         setSelectedAvatar(Byulee01)
         return
@@ -174,21 +207,6 @@ export default function Home() {
     }
   }
 
-  const handleChangeTheme = (event: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedTheme(event.target.value)
-  }
-
-  const handleChangeFont = (event: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedFont(event.target.value)
-  }
-
-  useEffect(() => {
-    const day = dayjs().startOf('week')
-    const tempStartDate = day.add(1, "day").toDate()
-    const tempEndDate = day.add(7, "day").toDate()
-    setDateRange([tempStartDate, tempEndDate])
-  }, []);
-
   return (
     <div id="main_content">
       <div className="main_inner">
@@ -196,7 +214,7 @@ export default function Home() {
           <div className="schedule_image">
             <div id="schedule-image" className={"image_section " + selectedTheme}>
               <div className="title_section">
-                <span className="HADM image_title"></span>
+                <span className="font_01 image_title"></span>
               </div>
               <div className="content_section">
                 <div className="schedule_section">
@@ -230,16 +248,14 @@ export default function Home() {
                     endDate={endDate}
                     minDate={new Date()}
                     dateFormat="M/d"
-                    onChange={(update: (Date | null)[]) => {
-                      setDateRange(update);
-                    }}
+                    onChange={(update: [Date | null, Date | null]) => setDateRange(update)}
                 />
               </div>
               <div className="btn_control">
-                <button className="HADM default_text reset_btn" onClick={() => clearScheduleImage()}>
+                <button className="font_01 default_text reset_btn" onClick={() => clearScheduleImage()}>
                   초기화
                 </button>
-                <button className="HADM default_text save_btn" onClick={() => saveScheduleImage()}>
+                <button className="font_01 default_text save_btn" onClick={() => saveScheduleImage()}>
                   저장하기
                 </button>
               </div>
@@ -247,7 +263,7 @@ export default function Home() {
             <div className="weeks_control">
               {weekData.map((item, index) => (
                   <div className="week_control" key={index}>
-                    <span className="HADM default_text week_title">{item.week}</span>
+                    <span className="font_01 default_text week_title">{item.week}</span>
                     <input
                         type="text"
                         className="HASD-500 default_text control_input"
@@ -262,56 +278,47 @@ export default function Home() {
                     <select className="HASD-500 default_text control_input" onChange={(event) => handleChangeTime(event, index)} value={item.time} disabled={item.rest_status}>
                       {item.am_or_pm === 0 ? <option value={12}>Ⓜ️12시</option> : null}
                       {item.am_or_pm === 1 ? <option value={2}>Ⓜ️2시</option> : null}
-                      <option value={1}>1시</option>
-                      <option value={2}>2시</option>
-                      <option value={3}>3시</option>
-                      <option value={4}>4시</option>
-                      <option value={5}>5시</option>
-                      <option value={6}>6시</option>
-                      <option value={7}>7시</option>
-                      <option value={8}>8시</option>
-                      <option value={9}>9시</option>
-                      <option value={10}>10시</option>
-                      <option value={11}>11시</option>
-                      <option value={12}>12시</option>
+                      {[...Array(12)].map((item, index) => (
+                          <option key={index} value={index + 1}>{(index + 1) + "시"}</option>
+                      ))}
                     </select>
-                    <label htmlFor={"restCheck" + index} className="HADM default_text rest_title">휴방</label>
+                    <label htmlFor={"restCheck" + index} className="font_01 default_text rest_title">휴방</label>
                     <input id={"restCheck" + index} type="checkbox" className="HASD-500 default_text control_input" checked={item.rest_status} onChange={(event) => {changeWeekRest(event, index)}}/>
                   </div>
               ))}
             </div>
             <div className="img_control">
-              <div className="control_section">
-                <span className="HADM default_text control_name">아바타</span>
-                <select className="HADM default_text control_input" onChange={(event) => handleChangeAvatar(event)} value={selectedAvatarIdx}>
-                  <option value={1}>별리1</option>
-                  <option value={2}>별리2</option>
-                  <option value={3}>별리3</option>
-                  <option value={4}>별리4</option>
-                </select>
-              </div>
+              <button className="font_01 default_text random_btn" onClick={() => changeRandomImage()}>
+                <FaRandom className="random_icon"/>
+                랜덤
+              </button>
+              <div className="select_section">
+                <div className="control_section">
+                  <span className="font_01 default_text control_name">아바타</span>
+                  <select className="font_01 default_text control_input" onChange={(event) => handleChangeAvatar(event)} value={selectedAvatarIdx}>
+                    {[...Array(avatarCnt)].map((item, index) => (
+                        <option key={index} value={index + 1}>{"별리" + (index + 1)}</option>
+                    ))}
+                  </select>
+                </div>
 
-              <div className="control_section">
-                <span className="HADM default_text control_name">테마</span>
-                <select className="HADM default_text control_input" onChange={(event) => handleChangeTheme(event)} value={selectedTheme}>
-                  <option value={"schedule_01"}>테마1</option>
-                  <option value={"schedule_02"}>테마2</option>
-                  <option value={"schedule_03"}>테마3</option>
-                  <option value={"schedule_04"}>테마4</option>
-                  <option value={"schedule_05"}>테마5</option>
-                  <option value={"schedule_06"}>테마6</option>
-                  <option value={"schedule_07"}>테마7</option>
-                </select>
-              </div>
+                <div className="control_section">
+                  <span className="font_01 default_text control_name">테마</span>
+                  <select className="font_01 default_text control_input" onChange={(event) => handleChangeTheme(event)} value={selectedTheme}>
+                    {[...Array(themeCnt)].map((item, index) => (
+                        <option key={index} value={"schedule_0" + (index + 1)}>{"테마" + (index + 1)}</option>
+                    ))}
+                  </select>
+                </div>
 
-              <div className="control_section">
-                <span className="HADM default_text control_name">폰트</span>
-                <select className={"default_text control_input " + selectedFont} onChange={(event) => handleChangeFont(event)} value={selectedFont}>
-                  <option value={"HADM"} className="HADM">폰트1</option>
-                  <option value={"OPOP"} className="OPOP">폰트2</option>
-                  <option value={"COOR"} className="COOR">폰트3</option>
-                  <option value={"BING"} className="BING">폰트4</option>
-                </select>
+                <div className="control_section">
+                  <span className="font_01 default_text control_name">폰트</span>
+                  <select className={"default_text control_input " + selectedFont} onChange={(event) => handleChangeFont(event)} value={selectedFont}>
+                    {[...Array(fontCnt)].map((item, index) => (
+                        <option key={index} value={"font_0" + (index + 1)} className={"font_0" + (index + 1)}>{"폰트" + (index + 1)}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
             </div>
           </div>
