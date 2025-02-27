@@ -8,6 +8,7 @@ import Byulee01 from "@img/avatar/byulee01.png"
 import Byulee02 from "@img/avatar/byulee02.png"
 import Byulee03 from "@img/avatar/byulee03.png"
 import Byulee04 from "@img/avatar/byulee04.png"
+import Skeleton from "@img/etc/skeleton_schedule.webp"
 import dayjs from "dayjs";
 import "react-datepicker/dist/react-datepicker.css";
 import {FaRandom, FaRegCalendar} from "react-icons/fa";
@@ -85,6 +86,8 @@ export default function Home() {
   const [selectedTheme, setSelectedTheme] = useState("schedule_01")
   const [selectedFont, setSelectedFont] = useState("font_01")
 
+  const [skeletonLoading, setSkeletonLoading] = useState(true)
+
   const fontCnt = 4
   const avatarCnt = 4
   const themeCnt = 7
@@ -161,6 +164,7 @@ export default function Home() {
   }
 
   const clearScheduleImage = () => {
+    setSkeletonLoading(true)
     setWeekData(weekArr)
     setSelectedAvatarIdx(1)
     setSelectedThemeIdx(1)
@@ -173,21 +177,28 @@ export default function Home() {
     const tempStartDate = day.add(1, "day").toDate()
     const tempEndDate = day.add(7, "day").toDate()
     setDateRange([tempStartDate, tempEndDate])
+    loadingSkeleton()
   }
 
   const handleChangeAvatar = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSkeletonLoading(true)
     setSelectedAvatarIdx(Number(event.target.value))
     switchAvatar(Number(event.target.value))
+    loadingSkeleton()
   }
 
   const handleChangeTheme = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSkeletonLoading(true)
     setSelectedThemeIdx(Number(event.target.value))
     setSelectedTheme("schedule_" + event.target.value.toString().padStart(2, '0'))
+    loadingSkeleton()
   }
 
   const handleChangeFont = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSkeletonLoading(true)
     setSelectedFontIdx(Number(event.target.value))
     setSelectedFont("font_" + event.target.value.toString().padStart(2, '0'))
+    loadingSkeleton()
   }
 
   useEffect(() => {
@@ -198,6 +209,7 @@ export default function Home() {
   }, []);
 
   const changeRandomImage = () => {
+    setSkeletonLoading(true)
     const avatarIdx = rand(avatarCnt, selectedAvatarIdx);
     const themeIdx = rand(themeCnt, selectedThemeIdx)
     const fontIdx = rand(fontCnt, selectedFontIdx)
@@ -207,6 +219,7 @@ export default function Home() {
     setSelectedThemeIdx(themeIdx)
     setSelectedFontIdx(fontIdx)
     switchAvatar(avatarIdx)
+    loadingSkeleton()
   }
 
   const rand = (num: number, def: number) => {
@@ -237,36 +250,48 @@ export default function Home() {
     }
   }
 
+  useEffect(() => {
+    loadingSkeleton()
+  }, []);
+
+  const loadingSkeleton = () => {
+    setTimeout(() => setSkeletonLoading(false), 1400)
+  }
+
   return (
     <div id="main_content">
       <div className="main_inner">
         <div className="schedule_main">
           <div className="schedule_image">
-            <div id="schedule-image" className={"image_section " + selectedTheme}>
-              <div className="title_section">
-                <span className="font_01 image_title"></span>
-              </div>
-              <div className="content_section">
-                <div className="schedule_section">
-                  {weekData.map((item, index) => (
-                      <div className="week_section" key={index}>
-                        <span className={"default_text week_title " + selectedFont}>{item.week}</span>
-                        <span className={"default_text week_content " + selectedFont}>{item.content}</span>
-                        <span className={"default_text week_time " + selectedFont}>{item.rest_status ? "휴방" : (item.am_or_pm === 0 ? "오전 " : "오후 ") + item.time + "시"}</span>
-                      </div>
-                  ))}
-                </div>
-                <div className="avatar_section">
-                  <div className="date_section">
-                    <span className={"default_text week_date " + selectedFont}>{dayjs(startDate).format("M/D") + "~" + dayjs(endDate).format("M/D")}</span>
+            {skeletonLoading ?
+                <Image src={Skeleton} alt="skeleton_schedule" className="skeleton_img"/>
+                :
+                <div id="schedule-image" className={"image_section " + selectedTheme}>
+                  <div className="title_section">
+                    <span className="font_01 image_title"></span>
                   </div>
-                  <Image src={selectedAvatar} alt="avatar" className="avatar_img"/>
+                  <div className="content_section">
+                    <div className="schedule_section">
+                      {weekData.map((item, index) => (
+                          <div className="week_section" key={index}>
+                            <span className={"default_text week_title " + selectedFont}>{item.week}</span>
+                            <span className={"default_text week_content " + selectedFont}>{item.content}</span>
+                            <span className={"default_text week_time " + selectedFont}>{item.rest_status ? "휴방" : (item.am_or_pm === 0 ? "오전 " : "오후 ") + item.time + "시"}</span>
+                          </div>
+                      ))}
+                    </div>
+                    <div className="avatar_section">
+                      <div className="date_section">
+                        <span className={"default_text week_date " + selectedFont}>{dayjs(startDate).format("M/D") + "~" + dayjs(endDate).format("M/D")}</span>
+                      </div>
+                      <Image src={selectedAvatar} alt="avatar" className="avatar_img"/>
+                    </div>
+                  </div>
+                  <div className="watermark_section">
+                    <span className="HASD-500 default_text">Created by HYNO. Source License : Designed By Freepik.</span>
+                  </div>
                 </div>
-              </div>
-              <div className="watermark_section">
-                <span className="HASD-500 default_text">Created by HYNO. Source License : Designed By Freepik.</span>
-              </div>
-            </div>
+            }
           </div>
           <div className="schedule_control">
             <div className="top_control">

@@ -1,10 +1,11 @@
 "use client"
 import Image, {StaticImageData} from "next/image";
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 import * as htmlToImage from 'html-to-image';
 import Byulee01 from "@img/avatar/avatar01.png"
 import Byulee02 from "@img/avatar/avatar02.png"
 import Byulee03 from "@img/avatar/avatar03.png"
+import Skeleton from "@img/etc/skeleton_banner.webp"
 import {FaRandom} from "react-icons/fa";
 import {RiResetLeftFill} from "react-icons/ri";
 import {IoIosSave} from "react-icons/io";
@@ -16,6 +17,8 @@ export default function Banner() {
     const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(Byulee01)
     const [selectedTheme, setSelectedTheme] = useState("banner_01")
     const [selectedFont, setSelectedFont] = useState("font_01")
+
+    const [skeletonLoading, setSkeletonLoading] = useState(true)
 
     const fontCnt = 4
     const avatarCnt = 3
@@ -40,6 +43,7 @@ export default function Banner() {
     }
 
     const clearScheduleImage = () => {
+        setSkeletonLoading(true)
         setValueNickname("")
         setSelectedAvatarIdx(1)
         setSelectedThemeIdx(1)
@@ -47,34 +51,28 @@ export default function Banner() {
         setSelectedAvatar(Byulee01)
         setSelectedTheme("banner_01")
         setSelectedFont("font_01")
+        loadingSkeleton()
     }
 
     const handleChangeAvatar = (event: ChangeEvent<HTMLSelectElement>) => {
+        setSkeletonLoading(true)
         setSelectedAvatarIdx(Number(event.target.value))
-        switch (Number(event.target.value)) {
-            case 1:
-                setSelectedAvatar(Byulee01)
-                return
-            case 2:
-                setSelectedAvatar(Byulee02)
-                return
-            case 3:
-                setSelectedAvatar(Byulee03)
-                return
-            default:
-                setSelectedAvatar(Byulee01)
-                return
-        }
+        switchAvatar(Number(event.target.value))
+        loadingSkeleton()
     }
 
     const handleChangeTheme = (event: ChangeEvent<HTMLSelectElement>) => {
+        setSkeletonLoading(true)
         setSelectedThemeIdx(Number(event.target.value))
         setSelectedTheme("banner_" + event.target.value.toString().padStart(2, '0'))
+        loadingSkeleton()
     }
 
     const handleChangeFont = (event: ChangeEvent<HTMLSelectElement>) => {
+        setSkeletonLoading(true)
         setSelectedFontIdx(Number(event.target.value))
         setSelectedFont("font_" + event.target.value.toString().padStart(2, '0'))
+        loadingSkeleton()
     }
 
     const changeValueNickname = (value: string) => {
@@ -87,6 +85,7 @@ export default function Banner() {
     }
 
     const changeRandomImage = () => {
+        setSkeletonLoading(true)
         const avatarIdx = rand(avatarCnt, selectedAvatarIdx);
         const themeIdx = rand(themeCnt, selectedThemeIdx)
         const fontIdx = rand(fontCnt, selectedFontIdx)
@@ -96,6 +95,7 @@ export default function Banner() {
         setSelectedThemeIdx(themeIdx)
         setSelectedFontIdx(fontIdx)
         switchAvatar(avatarIdx)
+        loadingSkeleton()
     }
 
     const rand = (num: number, def: number) => {
@@ -123,12 +123,23 @@ export default function Banner() {
         }
     }
 
+    useEffect(() => {
+        loadingSkeleton()
+    }, []);
+
+    const loadingSkeleton = () => {
+        setTimeout(() => setSkeletonLoading(false), 1200)
+    }
+
     return (
         <div id="main_content">
             <div className="main_inner">
                 <div className="banner_main">
                     <div className="banner_image">
-                        <div id="banner-image" className={"image_section " + selectedTheme}>
+                        {skeletonLoading ?
+                            <Image src={Skeleton} alt="skeleton_schedule" className="skeleton_img"/>
+                            :
+                            <div id="banner-image" className={"image_section " + selectedTheme}>
                             <div className="content_section">
                                 <div className="banner_section">
                                     <span className={"default_text banner_text " + selectedFont}>별리의</span>
@@ -144,6 +155,7 @@ export default function Banner() {
                                 <span className="HASD-500 default_text">Created by HYNO. Source License : Designed By Freepik.</span>
                             </div>
                         </div>
+                        }
                     </div>
                     <div className="banner_control">
                         <div className="top_control">

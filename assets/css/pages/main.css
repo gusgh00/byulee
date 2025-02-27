@@ -16,3 +16,21 @@
 .display_none {
     display: none;
 }
+
+@keyframes shine_skeleton {
+    0% {
+        filter: contrast(100%);
+    }
+    20% {
+        filter: contrast(100%);
+    }
+    50% {
+        filter: contrast(105%);
+    }
+    80% {
+        filter: contrast(100%);
+    }
+    100% {
+        filter: contrast(100%);
+    }
+}
