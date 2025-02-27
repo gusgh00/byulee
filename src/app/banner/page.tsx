@@ -6,6 +6,8 @@ import Byulee01 from "@img/avatar/avatar01.png"
 import Byulee02 from "@img/avatar/avatar02.png"
 import Byulee03 from "@img/avatar/avatar03.png"
 import {FaRandom} from "react-icons/fa";
+import {RiResetLeftFill} from "react-icons/ri";
+import {IoIosSave} from "react-icons/io";
 
 export default function Banner() {
     const [selectedAvatarIdx, setSelectedAvatarIdx] = useState(1)
@@ -80,8 +82,8 @@ export default function Banner() {
 
     const changeRandomImage = () => {
         const avatarIdx = rand(avatarCnt);
-        setSelectedTheme("banner_0" + rand(themeCnt))
-        setSelectedFont("font_0" + rand(fontCnt))
+        setSelectedTheme("banner_" + rand(themeCnt).toString().padStart(2, '0'))
+        setSelectedFont("font_" + rand(fontCnt).toString().padStart(2, '0'))
         setSelectedAvatarIdx(avatarIdx)
         switchAvatar(avatarIdx)
     }
@@ -131,17 +133,25 @@ export default function Banner() {
                     </div>
                     <div className="banner_control">
                         <div className="top_control">
+                            <div className="bann_control">
+                                <button className="DOL default_text random_btn" onClick={() => changeRandomImage()}>
+                                    <FaRandom className="random_icon"/>
+                                    랜덤
+                                </button>
+                            </div>
                             <div className="btn_control">
-                                <button className="font_01 default_text reset_btn" onClick={() => clearScheduleImage()}>
+                                <button className="DOL default_text reset_btn" onClick={() => clearScheduleImage()}>
+                                    <RiResetLeftFill className="reset_icon default_text"/>
                                     초기화
                                 </button>
-                                <button className="font_01 default_text save_btn" onClick={() => saveBannerImage()}>
+                                <button className="DOL default_text save_btn" onClick={() => saveBannerImage()}>
+                                    <IoIosSave className="save_icon default_text"/>
                                     저장하기
                                 </button>
                             </div>
                         </div>
                         <div className="name_control">
-                            <span className="font_01 default_text input_title">시청자 닉네임</span>
+                            <span className="DOL default_text input_title">시청자 닉네임</span>
                             <input
                                 type="text"
                                 className="HASD-500 default_text control_input"
@@ -151,14 +161,10 @@ export default function Banner() {
                             />
                         </div>
                         <div className="img_control">
-                            <button className="font_01 default_text random_btn" onClick={() => changeRandomImage()}>
-                                <FaRandom className="random_icon"/>
-                                랜덤
-                            </button>
                             <div className="select_section">
                                 <div className="control_section">
-                                    <span className="font_01 default_text control_name">아바타</span>
-                                    <select className="font_01 default_text control_input" onChange={(event) => handleChangeAvatar(event)} value={selectedAvatarIdx}>
+                                    <span className="DOL default_text control_name">아바타</span>
+                                    <select className="DOL default_text control_input" onChange={(event) => handleChangeAvatar(event)} value={selectedAvatarIdx}>
                                         {[...Array(avatarCnt)].map((item, index) => (
                                             <option key={index} value={index + 1}>{"별리" + (index + 1)}</option>
                                         ))}
@@ -166,19 +172,19 @@ export default function Banner() {
                                 </div>
 
                                 <div className="control_section">
-                                    <span className="font_01 default_text control_name">테마</span>
-                                    <select className="font_01 default_text control_input" onChange={(event) => handleChangeTheme(event)} value={selectedTheme}>
+                                    <span className="DOL default_text control_name">테마</span>
+                                    <select className="DOL default_text control_input" onChange={(event) => handleChangeTheme(event)} value={selectedTheme}>
                                         {[...Array(themeCnt)].map((item, index) => (
-                                            <option key={index} value={"banner_0" + (index + 1)}>{"테마" + (index + 1)}</option>
+                                            <option key={index} value={"banner_" + (index + 1).toString().padStart(2, '0')}>{"테마" + (index + 1)}</option>
                                         ))}
                                     </select>
                                 </div>
 
                                 <div className="control_section">
-                                    <span className="font_01 default_text control_name">폰트</span>
+                                    <span className="DOL default_text control_name">폰트</span>
                                     <select className={"default_text control_input " + selectedFont} onChange={(event) => handleChangeFont(event)} value={selectedFont}>
                                         {[...Array(fontCnt)].map((item, index) => (
-                                            <option key={index} value={"font_0" + (index + 1)} className={"font_0" + (index + 1)}>{"폰트" + (index + 1)}</option>
+                                            <option key={index} value={"font_" + (index + 1).toString().padStart(2, '0')} className={"font_" + (index + 1).toString().padStart(2, '0')}>{"폰트" + (index + 1)}</option>
                                         ))}
                                     </select>
                                 </div>

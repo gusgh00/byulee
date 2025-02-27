@@ -41,7 +41,6 @@
                         width: 390px;
                         height: 64px;
                         padding: 0 10px;
-
                         display: flex;
                         align-items: center;
                         gap: 20px;
@@ -192,45 +191,72 @@
             margin: 20px auto 0;
             display: flex;
             justify-content: space-between;
-            .date_control {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                background: #fff;
-                border-radius: 20px;
-                padding: 0 20px;
 
-                box-shadow:  4px 4px 14px #ededed,
-                -4px -4px 14px #ffffff;
-                .control_input {
-                    text-align: center;
-                    width: 120px;
-                    height: 40px;
-                    font-size: 20px;
-                    outline: none;
-                }
-            }
-            .btn_control {
+            .sche_control {
                 display: flex;
-                justify-content: right;
                 gap: 20px;
 
-                .reset_btn, .save_btn {
-                    background: #fff;
+                .random_btn, .cookie_btn {
                     height: 40px;
                     border-radius: 20px;
                     padding: 0 20px;
 
-                    box-shadow:  4px 4px 14px #ededed,
-                    -4px -4px 14px #ffffff;
+                    gap: 8px;
+
+                    border: solid 1px #3c3c3c;
 
                     display: flex;
                     align-items: center;
+                    justify-content: center;
 
                     font-size: 16px;
 
+                    .random_icon, .cookie_icon {
+                        width: 18px;
+                        height: 18px;
+                    }
+
                     &:hover {
-                        color: #ed6496;
+                        .random_icon, .cookie_icon {
+                            color: #FF6F61;
+                        }
+
+                        color: #FF6F61;
+                        border: solid 1px #FF6F61;
+                    }
+                }
+            }
+            .btn_control {
+                display: flex;
+                gap: 20px;
+
+                .reset_btn, .save_btn {
+                    height: 40px;
+                    border-radius: 20px;
+                    padding: 0 20px;
+
+                    gap: 8px;
+
+                    border: solid 1px #3c3c3c;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    font-size: 16px;
+
+                    .reset_icon, .save_icon {
+                        width: 18px;
+                        height: 18px;
+                    }
+
+                    &:hover {
+                        .reset_icon, .save_icon {
+                            color: #FF6F61;
+                        }
+
+                        color: #FF6F61;
+                        border: solid 1px #FF6F61;
                     }
                 }
             }
@@ -240,6 +266,7 @@
             display: flex;
             flex-direction: column;
             width: 550px;
+            height: 420px;
             gap: 20px;
             margin: 80px auto 80px;
 
@@ -251,8 +278,7 @@
                 border-radius: 20px;
                 padding: 0 20px;
 
-                box-shadow:  4px 4px 14px #ededed,
-                -4px -4px 14px #ffffff;
+                border: solid 1px #E8E8E8;
 
                 .week_title {
                     font-size: 22px;
@@ -271,9 +297,16 @@
                     &:disabled {
                         color: #E8E8E8;
                     }
+                    padding: 0 10px;
+
+                    appearance: none;
+                    background-image: url("../../img/etc/arrow_icon.png");
+                    background-repeat: no-repeat;
+                    background-position: right center;
+                    background-size: 20px;
                 }
                 & input[type="checkbox"] {
-                    accent-color: #ed6496;
+                    accent-color: #FF6F61;
                     width: 20px;
                     outline: 0;
                     cursor: pointer;
@@ -291,72 +324,49 @@
         .img_control {
             display: flex;
             justify-content: space-between;
-            gap: 100px;
+            gap: 20px;
             width: 550px;
-            margin: 0 auto 0;
-            .random_btn {
-                background: #fff;
-                height: 40px;
-                width: 100px;
-                border-radius: 20px;
-                padding: 0 20px;
-                margin-top: 20px;
+            margin: 0 auto 10px;
 
-                gap: 8px;
-
-                box-shadow:  4px 4px 14px #ededed,
-                -4px -4px 14px #ffffff;
-
+            .date_section {
                 display: flex;
-                align-items: center;
-                justify-content: center;
-
-                font-size: 16px;
-
-                .random_icon{
-                    width: 18px;
-                    height: 18px;
+                flex-direction: column;
+                gap: 2px;
+                .control_name {
+                    font-size: 12px;
                 }
+                .date_control {
+                    height: 40px;
 
-                &:hover {
-                    color: #ed6496;
-                }
-            }
-            .cookie_btn {
-                background: #fff;
-                height: 40px;
-                width: 150px;
-                border-radius: 20px;
-                padding: 0 20px;
-                margin-top: 20px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    background: #fff;
+                    border-radius: 20px;
 
-                gap: 8px;
+                    border: solid 1px #E8E8E8;
+                    .control_input {
+                        background: transparent;
 
-                box-shadow:  4px 4px 14px #ededed,
-                -4px -4px 14px #ffffff;
+                        text-align: center;
+                        width: 120px;
+                        height: 40px;
+                        font-size: 20px;
+                        outline: none;
+                    }
 
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                font-size: 16px;
-
-                .cookie_icon{
-                    width: 18px;
-                    height: 18px;
-                }
-
-                &:hover {
-                    color: #ed6496;
+                    &:hover {
+                        .control_input {
+                            color: #FF6F61;
+                        }
+                        border: solid 1px #FF6F61;
+                    }
                 }
             }
 
             .select_section {
                 display: flex;
-                justify-content: right;
-                gap: 40px;
-                width: 350px;
-                margin: 0 auto 0;
+                gap: 20px;
                 .control_section {
                     display: flex;
                     flex-direction: column;
@@ -365,22 +375,26 @@
                         font-size: 12px;
                     }
                     .control_input {
-                        background: #fff;
+                        width: 100px;
                         height: 40px;
                         border-radius: 20px;
 
-                        box-shadow:  4px 4px 14px #ededed,
-                        -4px -4px 14px #ffffff;
+                        border: solid 1px #E8E8E8;
 
                         display: flex;
                         align-items: center;
 
                         font-size: 16px;
-
                         padding: 0 10px;
-                        border-right: 10px solid transparent;
+
+                        appearance: none;
 
                         outline: none;
+
+                        background-image: url("../../img/etc/arrow_icon.png");
+                        background-repeat: no-repeat;
+                        background-position: right 10px center;
+                        background-size: 1rem;
                     }
                 }
             }

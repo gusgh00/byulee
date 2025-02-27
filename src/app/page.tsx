@@ -13,6 +13,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import {FaRandom} from "react-icons/fa";
 import {useCookies} from "react-cookie";
 import {MdCloudDownload} from "react-icons/md";
+import {IoIosSave} from "react-icons/io";
+import {RiResetLeftFill} from "react-icons/ri";
 
 export default function Home() {
   interface weekArrInterface {
@@ -191,8 +193,8 @@ export default function Home() {
 
   const changeRandomImage = () => {
     const avatarIdx = rand(avatarCnt);
-    setSelectedTheme("schedule_0" + rand(themeCnt))
-    setSelectedFont("font_0" + rand(fontCnt))
+    setSelectedTheme("schedule_" + rand(themeCnt).toString().padStart(2, '0'))
+    setSelectedFont("font_" + rand(fontCnt).toString().padStart(2, '0'))
     setSelectedAvatarIdx(avatarIdx)
     switchAvatar(avatarIdx)
   }
@@ -254,22 +256,24 @@ export default function Home() {
           </div>
           <div className="schedule_control">
             <div className="top_control">
-              <div className="date_control">
-                <DatePicker
-                    className="font_01 default_text control_input"
-                    selectsRange
-                    startDate={startDate}
-                    endDate={endDate}
-                    minDate={new Date()}
-                    dateFormat="M/d"
-                    onChange={(update: [Date | null, Date | null]) => setDateRange(update)}
-                />
+              <div className="sche_control">
+                <button className="DOL default_text random_btn" onClick={() => changeRandomImage()}>
+                  <FaRandom className="random_icon default_text"/>
+                  랜덤
+                </button>
+
+                <button className="DOL default_text cookie_btn" onClick={() => getImageCookie()}>
+                  <MdCloudDownload className="cookie_icon default_text"/>
+                  저장된 일정
+                </button>
               </div>
               <div className="btn_control">
-                <button className="font_01 default_text reset_btn" onClick={() => clearScheduleImage()}>
+                <button className="DOL default_text reset_btn" onClick={() => clearScheduleImage()}>
+                  <RiResetLeftFill className="reset_icon default_text"/>
                   초기화
                 </button>
-                <button className="font_01 default_text save_btn" onClick={() => saveScheduleImage()}>
+                <button className="DOL default_text save_btn" onClick={() => saveScheduleImage()}>
+                  <IoIosSave className="save_icon default_text"/>
                   저장하기
                 </button>
               </div>
@@ -277,39 +281,48 @@ export default function Home() {
             <div className="weeks_control">
               {weekData.map((item, index) => (
                   <div className="week_control" key={index}>
-                    <span className="font_01 default_text week_title">{item.week}</span>
+                    <span className="DOL default_text week_title">{item.week}</span>
                     <input
                         type="text"
-                        className="HASD-500 default_text control_input"
+                        className="DOL default_text control_input"
                         value={item.content}
                         onChange={(event) => {changeWeekContent(event.target.value, index)}}
                         placeholder="상세 일정을 입력해주세요."
                     />
-                    <select className="HASD-500 default_text control_input" onChange={(event) => handleChangeAMorPM(event, index)} value={item.am_or_pm} disabled={item.rest_status}>
+                    <select className="DOL default_text control_input" onChange={(event) => handleChangeAMorPM(event, index)} value={item.am_or_pm} disabled={item.rest_status}>
                       <option value={0}>오전</option>
                       <option value={1}>오후</option>
                     </select>
-                    <select className="HASD-500 default_text control_input" onChange={(event) => handleChangeTime(event, index)} value={item.time} disabled={item.rest_status}>
-                      {item.am_or_pm === 0 ? <option value={12}>Ⓜ️12시</option> : null}
-                      {item.am_or_pm === 1 ? <option value={2}>Ⓜ️2시</option> : null}
+                    <select className="DOL default_text control_input" onChange={(event) => handleChangeTime(event, index)} value={item.time} disabled={item.rest_status}>
                       {[...Array(12)].map((item, index) => (
                           <option key={index} value={index + 1}>{(index + 1) + "시"}</option>
                       ))}
                     </select>
-                    <label htmlFor={"restCheck" + index} className="font_01 default_text rest_title">휴방</label>
-                    <input id={"restCheck" + index} type="checkbox" className="HASD-500 default_text control_input" checked={item.rest_status} onChange={(event) => {changeWeekRest(event, index)}}/>
+                    <label htmlFor={"restCheck" + index} className="DOL default_text rest_title">휴방</label>
+                    <input id={"restCheck" + index} type="checkbox" className="DOL default_text control_input" checked={item.rest_status} onChange={(event) => {changeWeekRest(event, index)}}/>
                   </div>
               ))}
             </div>
             <div className="img_control">
-              <button className="font_01 default_text random_btn" onClick={() => changeRandomImage()}>
-                <FaRandom className="random_icon"/>
-                랜덤
-              </button>
+              <div className="date_section">
+                <span className="DOL default_text control_name">날짜 (자동 변경)</span>
+                <div className="date_control">
+                  <DatePicker
+                      className="DOL default_text control_input"
+                      selectsRange
+                      startDate={startDate}
+                      endDate={endDate}
+                      minDate={new Date()}
+                      dateFormat="M/d"
+                      onChange={(update: [Date | null, Date | null]) => setDateRange(update)}
+                  />
+                </div>
+              </div>
+
               <div className="select_section">
                 <div className="control_section">
-                  <span className="font_01 default_text control_name">아바타</span>
-                  <select className="font_01 default_text control_input" onChange={(event) => handleChangeAvatar(event)} value={selectedAvatarIdx}>
+                  <span className="DOL default_text control_name">아바타</span>
+                  <select className="DOL default_text control_input" onChange={(event) => handleChangeAvatar(event)} value={selectedAvatarIdx}>
                     {[...Array(avatarCnt)].map((item, index) => (
                         <option key={index} value={index + 1}>{"별리" + (index + 1)}</option>
                     ))}
@@ -317,29 +330,23 @@ export default function Home() {
                 </div>
 
                 <div className="control_section">
-                  <span className="font_01 default_text control_name">테마</span>
-                  <select className="font_01 default_text control_input" onChange={(event) => handleChangeTheme(event)} value={selectedTheme}>
+                  <span className="DOL default_text control_name">테마</span>
+                  <select className="DOL default_text control_input" onChange={(event) => handleChangeTheme(event)} value={selectedTheme}>
                     {[...Array(themeCnt)].map((item, index) => (
-                        <option key={index} value={"schedule_0" + (index + 1)}>{"테마" + (index + 1)}</option>
+                        <option key={index} value={"schedule_" + (index + 1).toString().padStart(2, '0')}>{"테마" + (index + 1)}</option>
                     ))}
                   </select>
                 </div>
 
                 <div className="control_section">
-                  <span className="font_01 default_text control_name">폰트</span>
+                  <span className="DOL default_text control_name">폰트</span>
                   <select className={"default_text control_input " + selectedFont} onChange={(event) => handleChangeFont(event)} value={selectedFont}>
                     {[...Array(fontCnt)].map((item, index) => (
-                        <option key={index} value={"font_0" + (index + 1)} className={"font_0" + (index + 1)}>{"폰트" + (index + 1)}</option>
+                        <option key={index} value={"font_" + (index + 1).toString().padStart(2, '0')} className={"font_" + (index + 1).toString().padStart(2, '0')}>{"폰트" + (index + 1)}</option>
                     ))}
                   </select>
                 </div>
               </div>
-            </div>
-            <div className="img_control">
-              <button className="font_01 default_text cookie_btn" onClick={() => getImageCookie()}>
-                <MdCloudDownload className="cookie_icon"/>
-                저장된 일정
-              </button>
             </div>
           </div>
         </div>
