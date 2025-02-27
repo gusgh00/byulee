@@ -192,48 +192,11 @@
             display: flex;
             justify-content: space-between;
 
-            .sche_control {
-                display: flex;
-                gap: 20px;
-
-                .random_btn, .cookie_btn {
-                    height: 40px;
-                    border-radius: 20px;
-                    padding: 0 20px;
-
-                    gap: 8px;
-
-                    border: solid 1px #3c3c3c;
-
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-
-                    font-size: 16px;
-
-                    transition: 0.2s;
-
-                    .random_icon, .cookie_icon {
-                        width: 18px;
-                        height: 18px;
-                        transition: 0.2s;
-                    }
-
-                    &:hover {
-                        .random_icon, .cookie_icon {
-                            color: #FF6F61;
-                        }
-
-                        color: #FF6F61;
-                        border: solid 1px #FF6F61;
-                    }
-                }
-            }
             .btn_control {
                 display: flex;
                 gap: 20px;
 
-                .reset_btn, .save_btn {
+                .reset_btn, .save_btn, .random_btn, .cookie_btn {
                     height: 40px;
                     border-radius: 20px;
                     padding: 0 20px;
@@ -250,14 +213,14 @@
 
                     transition: 0.2s;
 
-                    .reset_icon, .save_icon {
+                    .reset_icon, .save_icon, .random_icon, .cookie_icon {
                         width: 18px;
                         height: 18px;
                         transition: 0.2s;
                     }
 
                     &:hover {
-                        .reset_icon, .save_icon {
+                        .reset_icon, .save_icon, .random_icon, .cookie_icon {
                             color: #FF6F61;
                         }
 
@@ -371,11 +334,11 @@
                     font-size: 12px;
                 }
                 .date_control {
+                    width: 160px;
                     height: 40px;
 
                     display: flex;
                     align-items: center;
-                    gap: 10px;
                     background: #fff;
                     border-radius: 20px;
 
@@ -389,12 +352,10 @@
                         font-size: 20px;
                         outline: none;
                     }
-
-                    &:hover {
-                        .control_input {
-                            color: #FF6F61;
-                        }
-                        border: solid 1px #FF6F61;
+                    .date_icon {
+                        width: 20px;
+                        height: 20px;
+                        cursor: pointer;
                     }
                 }
             }
