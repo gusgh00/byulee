@@ -2,9 +2,17 @@
     padding-top: 64px;
     height: 100vh;
     background: #f4f2f0;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 
 .main_inner {
     width: 1300px;
     margin: auto;
+}
+
+.display_none {
+    display: none;
 }

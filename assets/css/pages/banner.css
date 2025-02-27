@@ -152,9 +152,12 @@
 
                     font-size: 16px;
 
+                    transition: 0.2s;
+
                     .random_icon {
                         width: 18px;
                         height: 18px;
+                        transition: 0.2s;
                     }
 
                     &:hover {
@@ -184,10 +187,12 @@
                     align-items: center;
 
                     font-size: 16px;
+                    transition: 0.2s;
 
                     .reset_icon, .save_icon {
                         width: 18px;
                         height: 18px;
+                        transition: 0.2s;
                     }
 
                     &:hover {
@@ -257,10 +262,15 @@
 
                         outline: none;
 
-                        background-image: url("../../img/etc/arrow_icon.png");
+                        cursor: pointer;
+
+                        background-image: url("../../img/etc/arrow_down_icon.png");
                         background-repeat: no-repeat;
                         background-position: right 10px center;
                         background-size: 1rem;
+                        &:focus {
+                            background-image: url("../../img/etc/arrow_up_icon.png");
+                        }
                     }
                 }
             }

@@ -13,7 +13,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import {FaRandom} from "react-icons/fa";
 import {useCookies} from "react-cookie";
 import {MdCloudDownload} from "react-icons/md";
-import {IoIosSave} from "react-icons/io";
+import {IoIosCheckmarkCircle, IoIosCheckmarkCircleOutline, IoIosSave} from "react-icons/io";
 import {RiResetLeftFill} from "react-icons/ri";
 
 export default function Home() {
@@ -122,10 +122,10 @@ export default function Home() {
     }))
   }
 
-  const changeWeekRest = (event: ChangeEvent<HTMLInputElement>, index: number) => {
+  const changeWeekRest = (index: number, type: boolean) => {
     setWeekData(weekData.map((item, idx: number) => {
       if (idx === index) {
-        return { ...item, rest_status: event.target.checked }
+        return { ...item, rest_status: type }
       } else {
         return item
       }
@@ -299,7 +299,12 @@ export default function Home() {
                       ))}
                     </select>
                     <label htmlFor={"restCheck" + index} className="DOL default_text rest_title">휴방</label>
-                    <input id={"restCheck" + index} type="checkbox" className="DOL default_text control_input" checked={item.rest_status} onChange={(event) => {changeWeekRest(event, index)}}/>
+                    <input id={"restCheck" + index} type="checkbox" className="DOL default_text control_input display_none" checked={item.rest_status} onChange={(event) => {changeWeekRest(index, event.target.checked)}}/>
+                    {item.rest_status ?
+                        <IoIosCheckmarkCircle className="rest_icon_true" onClick={() => changeWeekRest(index, false)}/>
+                    :
+                        <IoIosCheckmarkCircleOutline className="rest_icon_false" onClick={() => changeWeekRest(index, true)}/>
+                    }
                   </div>
               ))}
             </div>

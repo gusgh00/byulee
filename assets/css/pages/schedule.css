@@ -211,9 +211,12 @@
 
                     font-size: 16px;
 
+                    transition: 0.2s;
+
                     .random_icon, .cookie_icon {
                         width: 18px;
                         height: 18px;
+                        transition: 0.2s;
                     }
 
                     &:hover {
@@ -245,9 +248,12 @@
 
                     font-size: 16px;
 
+                    transition: 0.2s;
+
                     .reset_icon, .save_icon {
                         width: 18px;
                         height: 18px;
+                        transition: 0.2s;
                     }
 
                     &:hover {
@@ -291,6 +297,10 @@
                 }
                 & input[type="text"] {
                     width: 220px;
+
+                    -webkit-user-select: all;
+                    -moz-user-select: all;
+                    user-select: all;
                 }
                 & select {
                     width: 80px;
@@ -299,16 +309,33 @@
                     }
                     padding: 0 10px;
 
+                    transition: 0.2s;
                     appearance: none;
-                    background-image: url("../../img/etc/arrow_icon.png");
+                    cursor: pointer;
+                    background-image: url("../../img/etc/arrow_down_icon.png");
                     background-repeat: no-repeat;
                     background-position: right center;
-                    background-size: 20px;
+                    background-size: 16px;
+                    &:focus {
+                        background-image: url("../../img/etc/arrow_up_icon.png");
+                    }
                 }
                 & input[type="checkbox"] {
                     accent-color: #FF6F61;
                     width: 20px;
                     outline: 0;
+                    cursor: pointer;
+                }
+                .rest_icon_false {
+                    width: 24px;
+                    height: 24px;
+                    color: #9b9b9b;
+                    cursor: pointer;
+                }
+                .rest_icon_true {
+                    width: 24px;
+                    height: 24px;
+                    color: #FF6F61;
                     cursor: pointer;
                 }
                 .rest_title {
@@ -391,10 +418,15 @@
 
                         outline: none;
 
-                        background-image: url("../../img/etc/arrow_icon.png");
+                        cursor: pointer;
+
+                        background-image: url("../../img/etc/arrow_down_icon.png");
                         background-repeat: no-repeat;
                         background-position: right 10px center;
                         background-size: 1rem;
+                        &:focus {
+                            background-image: url("../../img/etc/arrow_up_icon.png");
+                        }
                     }
                 }
             }
