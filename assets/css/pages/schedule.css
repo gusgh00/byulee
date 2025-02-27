@@ -268,82 +268,90 @@
             }
         }
 
-        .weeks_control {
+        .weeks_section {
             display: flex;
             flex-direction: column;
             width: 550px;
             height: 420px;
-            gap: 20px;
             margin: 80px auto 80px;
-
-            .week_control {
+            gap: 2px;
+            .weeks_title {
+                font-size: 12px;
+            }
+            .weeks_control {
                 display: flex;
-                align-items: center;
-                gap: 10px;
-                background: #fff;
-                border-radius: 20px;
-                padding: 0 20px;
+                flex-direction: column;
+                gap: 20px;
 
-                border: solid 1px #E8E8E8;
+                .week_control {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    background: #fff;
+                    border-radius: 20px;
+                    padding: 0 20px;
 
-                .week_title {
-                    font-size: 22px;
-                }
-                .control_input {
-                    height: 40px;
-                    font-size: 20px;
-                    border-left: #f8f8f8 solid 2px;
-                    outline: none;
-                }
-                & input[type="text"] {
-                    width: 220px;
+                    border: solid 1px #E8E8E8;
 
-                    -webkit-user-select: all;
-                    -moz-user-select: all;
-                    user-select: all;
-                }
-                & select {
-                    width: 80px;
-                    &:disabled {
-                        color: #E8E8E8;
+                    .week_title {
+                        font-size: 22px;
                     }
-                    padding: 0 10px;
-
-                    transition: 0.2s;
-                    appearance: none;
-                    cursor: pointer;
-                    background-image: url("../../img/etc/arrow_down_icon.png");
-                    background-repeat: no-repeat;
-                    background-position: right center;
-                    background-size: 16px;
-                    &:focus {
-                        background-image: url("../../img/etc/arrow_up_icon.png");
+                    .control_input {
+                        height: 40px;
+                        font-size: 20px;
+                        border-left: #f8f8f8 solid 2px;
+                        outline: none;
                     }
-                }
-                & input[type="checkbox"] {
-                    accent-color: #FF6F61;
-                    width: 20px;
-                    outline: 0;
-                    cursor: pointer;
-                }
-                .rest_icon_false {
-                    width: 24px;
-                    height: 24px;
-                    color: #9b9b9b;
-                    cursor: pointer;
-                }
-                .rest_icon_true {
-                    width: 24px;
-                    height: 24px;
-                    color: #FF6F61;
-                    cursor: pointer;
-                }
-                .rest_title {
-                    height: 40px;
-                    line-height: 40px;
-                    border-left: #f8f8f8 solid 2px;
-                    font-size: 16px;
-                    cursor: pointer;
+                    & input[type="text"] {
+                        width: 220px;
+
+                        -webkit-user-select: all;
+                        -moz-user-select: all;
+                        user-select: all;
+                    }
+                    & select {
+                        width: 80px;
+                        &:disabled {
+                            color: #E8E8E8;
+                        }
+                        padding: 0 10px;
+
+                        transition: 0.2s;
+                        appearance: none;
+                        cursor: pointer;
+                        background-image: url("../../img/etc/arrow_down_icon.png");
+                        background-repeat: no-repeat;
+                        background-position: right center;
+                        background-size: 16px;
+                        &:focus {
+                            background-image: url("../../img/etc/arrow_up_icon.png");
+                        }
+                    }
+                    & input[type="checkbox"] {
+                        accent-color: #FF6F61;
+                        width: 20px;
+                        outline: 0;
+                        cursor: pointer;
+                    }
+                    .rest_icon_false {
+                        width: 24px;
+                        height: 24px;
+                        color: #9b9b9b;
+                        cursor: pointer;
+                    }
+                    .rest_icon_true {
+                        width: 24px;
+                        height: 24px;
+                        color: #FF6F61;
+                        cursor: pointer;
+                    }
+                    .rest_title {
+                        height: 40px;
+                        line-height: 40px;
+                        border-left: #f8f8f8 solid 2px;
+                        font-size: 16px;
+                        cursor: pointer;
+                    }
                 }
             }
         }

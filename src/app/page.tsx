@@ -278,35 +278,38 @@ export default function Home() {
                 </button>
               </div>
             </div>
-            <div className="weeks_control">
-              {weekData.map((item, index) => (
-                  <div className="week_control" key={index}>
-                    <span className="DOL default_text week_title">{item.week}</span>
-                    <input
-                        type="text"
-                        className="DOL default_text control_input"
-                        value={item.content}
-                        onChange={(event) => {changeWeekContent(event.target.value, index)}}
-                        placeholder="상세 일정을 입력해주세요."
-                    />
-                    <select className="DOL default_text control_input" onChange={(event) => handleChangeAMorPM(event, index)} value={item.am_or_pm} disabled={item.rest_status}>
-                      <option value={0}>오전</option>
-                      <option value={1}>오후</option>
-                    </select>
-                    <select className="DOL default_text control_input" onChange={(event) => handleChangeTime(event, index)} value={item.time} disabled={item.rest_status}>
-                      {[...Array(12)].map((item, index) => (
-                          <option key={index} value={index + 1}>{(index + 1) + "시"}</option>
-                      ))}
-                    </select>
-                    <label htmlFor={"restCheck" + index} className="DOL default_text rest_title">휴방</label>
-                    <input id={"restCheck" + index} type="checkbox" className="DOL default_text control_input display_none" checked={item.rest_status} onChange={(event) => {changeWeekRest(index, event.target.checked)}}/>
-                    {item.rest_status ?
-                        <IoIosCheckmarkCircle className="rest_icon_true" onClick={() => changeWeekRest(index, false)}/>
-                    :
-                        <IoIosCheckmarkCircleOutline className="rest_icon_false" onClick={() => changeWeekRest(index, true)}/>
-                    }
-                  </div>
-              ))}
+            <div className="weeks_section">
+              <span className="DOL default_text weeks_title">일정 작성</span>
+              <div className="weeks_control">
+                {weekData.map((item, index) => (
+                    <div className="week_control" key={index}>
+                      <span className="DOL default_text week_title">{item.week}</span>
+                      <input
+                          type="text"
+                          className="DOL default_text control_input"
+                          value={item.content}
+                          onChange={(event) => {changeWeekContent(event.target.value, index)}}
+                          placeholder="상세 일정을 입력해주세요."
+                      />
+                      <select className="DOL default_text control_input" onChange={(event) => handleChangeAMorPM(event, index)} value={item.am_or_pm} disabled={item.rest_status}>
+                        <option value={0}>오전</option>
+                        <option value={1}>오후</option>
+                      </select>
+                      <select className="DOL default_text control_input" onChange={(event) => handleChangeTime(event, index)} value={item.time} disabled={item.rest_status}>
+                        {[...Array(12)].map((item, index) => (
+                            <option key={index} value={index + 1}>{(index + 1) + "시"}</option>
+                        ))}
+                      </select>
+                      <label htmlFor={"restCheck" + index} className="DOL default_text rest_title">휴방</label>
+                      <input id={"restCheck" + index} type="checkbox" className="DOL default_text control_input display_none" checked={item.rest_status} onChange={(event) => {changeWeekRest(index, event.target.checked)}}/>
+                      {item.rest_status ?
+                          <IoIosCheckmarkCircle className="rest_icon_true" onClick={() => changeWeekRest(index, false)}/>
+                          :
+                          <IoIosCheckmarkCircleOutline className="rest_icon_false" onClick={() => changeWeekRest(index, true)}/>
+                      }
+                    </div>
+                ))}
+              </div>
             </div>
             <div className="img_control">
               <div className="date_section">

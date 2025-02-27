@@ -9,6 +9,8 @@
         width: 100%;
         background: #fff;
 
+        border-bottom: solid 1px #efefef;
+
         .inner_section {
             width: 1260px;
             height: 64px;
