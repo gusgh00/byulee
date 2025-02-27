@@ -10,7 +10,7 @@ import Byulee03 from "@img/avatar/byulee03.png"
 import Byulee04 from "@img/avatar/byulee04.png"
 import dayjs from "dayjs";
 import "react-datepicker/dist/react-datepicker.css";
-import {FaRandom} from "react-icons/fa";
+import {FaRandom, FaRegCalendar} from "react-icons/fa";
 import {useCookies} from "react-cookie";
 import {MdCloudDownload} from "react-icons/md";
 import {IoIosCheckmarkCircle, IoIosCheckmarkCircleOutline, IoIosSave} from "react-icons/io";
@@ -79,6 +79,8 @@ export default function Home() {
 
   const [weekData, setWeekData] = useState<weekArrInterface[]>(weekArr)
   const [selectedAvatarIdx, setSelectedAvatarIdx] = useState(1)
+  const [selectedThemeIdx, setSelectedThemeIdx] = useState(1)
+  const [selectedFontIdx, setSelectedFontIdx] = useState(1)
   const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(Byulee01)
   const [selectedTheme, setSelectedTheme] = useState("schedule_01")
   const [selectedFont, setSelectedFont] = useState("font_01")
@@ -160,7 +162,9 @@ export default function Home() {
 
   const clearScheduleImage = () => {
     setWeekData(weekArr)
-    setSelectedAvatarIdx(0)
+    setSelectedAvatarIdx(1)
+    setSelectedThemeIdx(1)
+    setSelectedFontIdx(1)
     setSelectedAvatar(Byulee01)
     setSelectedTheme("schedule_01")
     setSelectedFont("font_01")
@@ -177,11 +181,13 @@ export default function Home() {
   }
 
   const handleChangeTheme = (event: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedTheme(event.target.value)
+    setSelectedThemeIdx(Number(event.target.value))
+    setSelectedTheme("schedule_" + event.target.value.toString().padStart(2, '0'))
   }
 
   const handleChangeFont = (event: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedFont(event.target.value)
+    setSelectedFontIdx(Number(event.target.value))
+    setSelectedFont("font_" + event.target.value.toString().padStart(2, '0'))
   }
 
   useEffect(() => {
@@ -192,15 +198,23 @@ export default function Home() {
   }, []);
 
   const changeRandomImage = () => {
-    const avatarIdx = rand(avatarCnt);
-    setSelectedTheme("schedule_" + rand(themeCnt).toString().padStart(2, '0'))
-    setSelectedFont("font_" + rand(fontCnt).toString().padStart(2, '0'))
+    const avatarIdx = rand(avatarCnt, selectedAvatarIdx);
+    const themeIdx = rand(themeCnt, selectedThemeIdx)
+    const fontIdx = rand(fontCnt, selectedFontIdx)
+    setSelectedTheme("schedule_" + themeIdx.toString().padStart(2, '0'))
+    setSelectedFont("font_" + fontIdx.toString().padStart(2, '0'))
     setSelectedAvatarIdx(avatarIdx)
+    setSelectedThemeIdx(themeIdx)
+    setSelectedFontIdx(fontIdx)
     switchAvatar(avatarIdx)
   }
 
-  const rand = (num: number) => {
-    return Math.floor(Math.random() * (num - 1 + 1)) + 1
+  const rand = (num: number, def: number) => {
+    let randNum = 0
+    do {
+      randNum = Math.floor(Math.random() * (num - 1 + 1)) + 1
+    } while (randNum === def)
+    return randNum
   }
 
   const switchAvatar = (num: Number) => {
@@ -256,7 +270,7 @@ export default function Home() {
           </div>
           <div className="schedule_control">
             <div className="top_control">
-              <div className="sche_control">
+              <div className="btn_control">
                 <button className="DOL default_text random_btn" onClick={() => changeRandomImage()}>
                   <FaRandom className="random_icon default_text"/>
                   랜덤
@@ -316,6 +330,7 @@ export default function Home() {
                 <span className="DOL default_text control_name">날짜 (자동 변경)</span>
                 <div className="date_control">
                   <DatePicker
+                      id="date_picker"
                       className="DOL default_text control_input"
                       selectsRange
                       startDate={startDate}
@@ -324,6 +339,9 @@ export default function Home() {
                       dateFormat="M/d"
                       onChange={(update: [Date | null, Date | null]) => setDateRange(update)}
                   />
+                  <label htmlFor="date_picker">
+                    <FaRegCalendar className="default_text date_icon"/>
+                  </label>
                 </div>
               </div>
 
@@ -339,18 +357,18 @@ export default function Home() {
 
                 <div className="control_section">
                   <span className="DOL default_text control_name">테마</span>
-                  <select className="DOL default_text control_input" onChange={(event) => handleChangeTheme(event)} value={selectedTheme}>
+                  <select className="DOL default_text control_input" onChange={(event) => handleChangeTheme(event)} value={selectedThemeIdx}>
                     {[...Array(themeCnt)].map((item, index) => (
-                        <option key={index} value={"schedule_" + (index + 1).toString().padStart(2, '0')}>{"테마" + (index + 1)}</option>
+                        <option key={index} value={index + 1}>{"테마" + (index + 1)}</option>
                     ))}
                   </select>
                 </div>
 
                 <div className="control_section">
                   <span className="DOL default_text control_name">폰트</span>
-                  <select className={"default_text control_input " + selectedFont} onChange={(event) => handleChangeFont(event)} value={selectedFont}>
+                  <select className={"default_text control_input " + selectedFont} onChange={(event) => handleChangeFont(event)} value={selectedFontIdx}>
                     {[...Array(fontCnt)].map((item, index) => (
-                        <option key={index} value={"font_" + (index + 1).toString().padStart(2, '0')} className={"font_" + (index + 1).toString().padStart(2, '0')}>{"폰트" + (index + 1)}</option>
+                        <option key={index} value={index + 1} className={"font_" + (index + 1).toString().padStart(2, '0')}>{"폰트" + (index + 1)}</option>
                     ))}
                   </select>
                 </div>
