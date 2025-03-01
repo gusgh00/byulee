@@ -4,7 +4,7 @@
 
     .schedule_image {
         width: 720px;
-        height: calc(100vh - 64px - 80px);
+        height: calc(100vh - 64px - 60px);
 
         background: rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(30);
@@ -198,7 +198,7 @@
     }
     .schedule_control {
         width: 580px;
-        height: calc(100vh - 64px - 80px);
+        height: calc(100vh - 64px - 60px);
         background: rgba(255, 255, 255, 0.5);
         backdrop-filter: blur(30);
         border-right: solid 1px #efefef;
@@ -237,11 +237,11 @@
 
                     &:hover {
                         .reset_icon, .save_icon, .random_icon, .cookie_icon {
-                            color: #FF6F61;
+                            color: #ff6161;
                         }
 
-                        color: #FF6F61;
-                        border: solid 1px #FF6F61;
+                        color: #ff6161;
+                        border: solid 1px #ff6161;
                     }
                 }
             }
@@ -307,7 +307,7 @@
                         }
                     }
                     & input[type="checkbox"] {
-                        accent-color: #FF6F61;
+                        accent-color: #ff6161;
                         width: 20px;
                         outline: 0;
                         cursor: pointer;
@@ -321,7 +321,7 @@
                     .rest_icon_true {
                         width: 24px;
                         height: 24px;
-                        color: #FF6F61;
+                        color: #ff6161;
                         cursor: pointer;
                     }
                     .rest_title {

@@ -130,7 +130,7 @@ export default function Banner() {
                                 </div>
                             </div>
                             <div className="watermark_section">
-                                <span className="HASD-500 default_text">Created by HYNO. Source License : Designed By Freepik.</span>
+                                <span className="DOL default_text">Created by HYNO. Source License : Designed By Freepik.</span>
                             </div>
                         </div>
                     </div>
@@ -157,7 +157,7 @@ export default function Banner() {
                             <span className="DOL default_text input_title">시청자 닉네임</span>
                             <input
                                 type="text"
-                                className="HASD-500 default_text control_input"
+                                className="DOL default_text control_input"
                                 value={valueNickname}
                                 onChange={(event) => {changeValueNickname(event.target.value)}}
                                 placeholder="시청자 닉네임을 입력해주세요. (1 ~ 5자)"

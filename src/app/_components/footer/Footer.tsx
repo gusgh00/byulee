@@ -5,8 +5,8 @@ const FooterBox = () => {
         <footer id="footer_box">
             <div className="footer_section">
                 <div className="inner_section">
-                    <span className="HASD-500 footer_copyright">Created By HYNO.</span>
-                    <span className="HASD-500 footer_copyright">© 2025 Byulee. All Rights Reserved.</span>
+                    <span className="DOL footer_copyright">© 2025 HYNO. All Rights Reserved.</span>
+                    <span className="DOL footer_copyright">Created By HYNO.</span>
                 </div>
             </div>
         </footer>

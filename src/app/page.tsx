@@ -256,7 +256,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="watermark_section">
-                <span className="HASD-500 default_text">Created by HYNO. Source License : Designed By Freepik.</span>
+                <span className="DOL default_text">Created by HYNO. Source License : Designed By Freepik.</span>
               </div>
             </div>
           </div>
@@ -329,7 +329,9 @@ export default function Home() {
                       endDate={endDate}
                       minDate={new Date()}
                       dateFormat="M/d"
-                      onChange={(update: [Date | null, Date | null]) => setDateRange(update)}
+                      onChange={(update: boolean | undefined extends false | undefined
+                          ? (boolean | undefined extends false | undefined ? Date | null : Date[] | null)
+                          : [Date | null, Date | null]) => setDateRange(update)}
                   />
                   <label htmlFor="date_picker">
                     <FaRegCalendar className="default_text date_icon"/>
