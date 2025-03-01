@@ -46,6 +46,22 @@
                 .avatar_section {
                     width: 160px;
                     height: 150px;
+                    .avatar_img {
+                        width: 160px;
+                        height: 150px;
+                        &.avatar_01 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/avatar/avatar01.png");
+                            background-size: cover;
+                        }
+                        &.avatar_02 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/avatar/avatar02.png");
+                            background-size: cover;
+                        }
+                        &.avatar_03 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/avatar/avatar03.png");
+                            background-size: cover;
+                        }
+                    }
                 }
             }
 
@@ -263,6 +279,16 @@
                         }
                         .theme_dummy06 {
                             background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/banner06.png");
+                        }
+
+                        .avatar_dummy01 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/avatar/avatar01.png");
+                        }
+                        .avatar_dummy02 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/avatar/avatar02.png");
+                        }
+                        .avatar_dummy03 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/avatar/avatar03.png");
                         }
                     }
                 }

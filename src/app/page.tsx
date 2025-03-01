@@ -1,13 +1,7 @@
 "use client"
-import Image, {StaticImageData} from "next/image";
 import {ChangeEvent, useEffect, useState} from "react";
 import * as htmlToImage from 'html-to-image';
 import DatePicker from "react-datepicker";
-import Byulee00 from "@img/avatar/byulee00.png"
-import Byulee01 from "@img/avatar/byulee01.png"
-import Byulee02 from "@img/avatar/byulee02.png"
-import Byulee03 from "@img/avatar/byulee03.png"
-import Byulee04 from "@img/avatar/byulee04.png"
 import dayjs from "dayjs";
 import "react-datepicker/dist/react-datepicker.css";
 import {FaRandom, FaRegCalendar} from "react-icons/fa";
@@ -81,7 +75,7 @@ export default function Home() {
   const [selectedAvatarIdx, setSelectedAvatarIdx] = useState(1)
   const [selectedThemeIdx, setSelectedThemeIdx] = useState(1)
   const [selectedFontIdx, setSelectedFontIdx] = useState(1)
-  const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(Byulee01)
+  const [selectedAvatar, setSelectedAvatar] = useState("avatar_01")
   const [selectedTheme, setSelectedTheme] = useState("schedule_01")
   const [selectedFont, setSelectedFont] = useState("font_01")
 
@@ -168,7 +162,7 @@ export default function Home() {
     setSelectedAvatarIdx(1)
     setSelectedThemeIdx(1)
     setSelectedFontIdx(1)
-    setSelectedAvatar(Byulee01)
+    setSelectedAvatar("avatar_01")
     setSelectedTheme("schedule_01")
     setSelectedFont("font_01")
 
@@ -176,28 +170,28 @@ export default function Home() {
     const tempStartDate = day.add(1, "day").toDate()
     const tempEndDate = day.add(7, "day").toDate()
     setDateRange([tempStartDate, tempEndDate])
-    loadingSkeleton()
+    loadingSkeleton(900)
   }
 
   const handleChangeAvatar = (event: ChangeEvent<HTMLSelectElement>) => {
     setSkeletonLoading(true)
     setSelectedAvatarIdx(Number(event.target.value))
-    switchAvatar(Number(event.target.value))
-    loadingSkeleton()
+    setSelectedAvatar("avatar_" + event.target.value.toString().padStart(2, '0'))
+    loadingSkeleton(700)
   }
 
   const handleChangeTheme = (event: ChangeEvent<HTMLSelectElement>) => {
     setSkeletonLoading(true)
     setSelectedThemeIdx(Number(event.target.value))
     setSelectedTheme("schedule_" + event.target.value.toString().padStart(2, '0'))
-    loadingSkeleton()
+    loadingSkeleton(700)
   }
 
   const handleChangeFont = (event: ChangeEvent<HTMLSelectElement>) => {
     setSkeletonLoading(true)
     setSelectedFontIdx(Number(event.target.value))
     setSelectedFont("font_" + event.target.value.toString().padStart(2, '0'))
-    loadingSkeleton()
+    loadingSkeleton(300)
   }
 
   useEffect(() => {
@@ -212,13 +206,13 @@ export default function Home() {
     const avatarIdx = rand(avatarCnt, selectedAvatarIdx);
     const themeIdx = rand(themeCnt, selectedThemeIdx)
     const fontIdx = rand(fontCnt, selectedFontIdx)
+    setSelectedAvatar("avatar_" + avatarIdx.toString().padStart(2, '0'))
     setSelectedTheme("schedule_" + themeIdx.toString().padStart(2, '0'))
     setSelectedFont("font_" + fontIdx.toString().padStart(2, '0'))
     setSelectedAvatarIdx(avatarIdx)
     setSelectedThemeIdx(themeIdx)
     setSelectedFontIdx(fontIdx)
-    switchAvatar(avatarIdx)
-    loadingSkeleton()
+    loadingSkeleton(900)
   }
 
   const rand = (num: number, def: number) => {
@@ -229,32 +223,12 @@ export default function Home() {
     return randNum
   }
 
-  const switchAvatar = (num: Number) => {
-    switch (num) {
-      case 1:
-        setSelectedAvatar(Byulee01)
-        return
-      case 2:
-        setSelectedAvatar(Byulee02)
-        return
-      case 3:
-        setSelectedAvatar(Byulee03)
-        return
-      case 4:
-        setSelectedAvatar(Byulee04)
-        return
-      default:
-        setSelectedAvatar(Byulee00)
-        return
-    }
-  }
-
   useEffect(() => {
-    loadingSkeleton()
+    loadingSkeleton(1500)
   }, []);
 
-  const loadingSkeleton = () => {
-    setTimeout(() => setSkeletonLoading(false), 1400)
+  const loadingSkeleton = (time: number) => {
+    setTimeout(() => setSkeletonLoading(false), time)
   }
 
   return (
@@ -278,7 +252,7 @@ export default function Home() {
                   <div className="date_section">
                     <span className={"default_text week_date " + selectedFont}>{dayjs(startDate).format("M/D") + "~" + dayjs(endDate).format("M/D")}</span>
                   </div>
-                  <Image src={selectedAvatar} alt="avatar" className="avatar_img"/>
+                  <div className={"avatar_img " + selectedAvatar}></div>
                 </div>
               </div>
               <div className="watermark_section">
@@ -368,7 +342,7 @@ export default function Home() {
                   <span className="DOL default_text control_name">아바타</span>
                   <select className="DOL default_text control_input" onChange={(event) => handleChangeAvatar(event)} value={selectedAvatarIdx}>
                     {[...Array(avatarCnt)].map((item, index) => (
-                        <option key={index} value={index + 1}>{"별리" + (index + 1)}</option>
+                        <option key={index} value={index + 1} className={"avatar_dummy" + (index + 1).toString().padStart(2, '0')}>{"별리" + (index + 1)}</option>
                     ))}
                   </select>
                 </div>

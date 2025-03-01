@@ -1,10 +1,6 @@
 "use client"
-import Image, {StaticImageData} from "next/image";
 import {ChangeEvent, useEffect, useState} from "react";
 import * as htmlToImage from 'html-to-image';
-import Byulee01 from "@img/avatar/avatar01.png"
-import Byulee02 from "@img/avatar/avatar02.png"
-import Byulee03 from "@img/avatar/avatar03.png"
 import {FaRandom} from "react-icons/fa";
 import {RiResetLeftFill} from "react-icons/ri";
 import {IoIosSave} from "react-icons/io";
@@ -13,7 +9,7 @@ export default function Banner() {
     const [selectedAvatarIdx, setSelectedAvatarIdx] = useState(1)
     const [selectedThemeIdx, setSelectedThemeIdx] = useState(1)
     const [selectedFontIdx, setSelectedFontIdx] = useState(1)
-    const [selectedAvatar, setSelectedAvatar] = useState<StaticImageData>(Byulee01)
+    const [selectedAvatar, setSelectedAvatar] = useState("avatar_01")
     const [selectedTheme, setSelectedTheme] = useState("banner_01")
     const [selectedFont, setSelectedFont] = useState("font_01")
 
@@ -47,31 +43,32 @@ export default function Banner() {
         setSelectedAvatarIdx(1)
         setSelectedThemeIdx(1)
         setSelectedFontIdx(1)
-        setSelectedAvatar(Byulee01)
+        setSelectedAvatar("avatar_01")
         setSelectedTheme("banner_01")
         setSelectedFont("font_01")
-        loadingSkeleton()
+        loadingSkeleton(700)
     }
 
     const handleChangeAvatar = (event: ChangeEvent<HTMLSelectElement>) => {
         setSkeletonLoading(true)
         setSelectedAvatarIdx(Number(event.target.value))
-        switchAvatar(Number(event.target.value))
-        loadingSkeleton()
+        // switchAvatar(Number(event.target.value))
+        setSelectedAvatar("avatar_" + event.target.value.toString().padStart(2, '0'))
+        loadingSkeleton(500)
     }
 
     const handleChangeTheme = (event: ChangeEvent<HTMLSelectElement>) => {
         setSkeletonLoading(true)
         setSelectedThemeIdx(Number(event.target.value))
         setSelectedTheme("banner_" + event.target.value.toString().padStart(2, '0'))
-        loadingSkeleton()
+        loadingSkeleton(500)
     }
 
     const handleChangeFont = (event: ChangeEvent<HTMLSelectElement>) => {
         setSkeletonLoading(true)
         setSelectedFontIdx(Number(event.target.value))
         setSelectedFont("font_" + event.target.value.toString().padStart(2, '0'))
-        loadingSkeleton()
+        loadingSkeleton(300)
     }
 
     const changeValueNickname = (value: string) => {
@@ -88,13 +85,14 @@ export default function Banner() {
         const avatarIdx = rand(avatarCnt, selectedAvatarIdx);
         const themeIdx = rand(themeCnt, selectedThemeIdx)
         const fontIdx = rand(fontCnt, selectedFontIdx)
+        setSelectedAvatar("avatar_" + avatarIdx.toString().padStart(2, '0'))
         setSelectedTheme("banner_" + themeIdx.toString().padStart(2, '0'))
         setSelectedFont("font_" + fontIdx.toString().padStart(2, '0'))
         setSelectedAvatarIdx(avatarIdx)
         setSelectedThemeIdx(themeIdx)
         setSelectedFontIdx(fontIdx)
-        switchAvatar(avatarIdx)
-        loadingSkeleton()
+        // switchAvatar(avatarIdx)
+        loadingSkeleton(700)
     }
 
     const rand = (num: number, def: number) => {
@@ -105,29 +103,12 @@ export default function Banner() {
         return randNum
     }
 
-    const switchAvatar = (num: Number) => {
-        switch (num) {
-            case 1:
-                setSelectedAvatar(Byulee01)
-                return
-            case 2:
-                setSelectedAvatar(Byulee02)
-                return
-            case 3:
-                setSelectedAvatar(Byulee03)
-                return
-            default:
-                setSelectedAvatar(Byulee01)
-                return
-        }
-    }
-
     useEffect(() => {
-        loadingSkeleton()
+        loadingSkeleton(1200)
     }, []);
 
-    const loadingSkeleton = () => {
-        setTimeout(() => setSkeletonLoading(false), 1200)
+    const loadingSkeleton = (time: number) => {
+        setTimeout(() => setSkeletonLoading(false), time)
     }
 
     return (
@@ -142,7 +123,7 @@ export default function Banner() {
                                     <span className={"default_text banner_text " + selectedFont}>별리의</span>
                                 </div>
                                 <div className="avatar_section">
-                                    <Image src={selectedAvatar} alt="avatar" className="avatar_img"/>
+                                    <div className={"avatar_img " + selectedAvatar}></div>
                                 </div>
                                 <div className="banner_section">
                                     <span className={"default_text banner_text " + selectedFont}>{valueNickname}</span>
@@ -188,7 +169,7 @@ export default function Banner() {
                                     <span className="DOL default_text control_name">아바타</span>
                                     <select className="DOL default_text control_input" onChange={(event) => handleChangeAvatar(event)} value={selectedAvatarIdx}>
                                         {[...Array(avatarCnt)].map((item, index) => (
-                                            <option key={index} value={index + 1}>{"별리" + (index + 1)}</option>
+                                            <option key={index} value={index + 1} className={"avatar_dummy" + (index + 1).toString().padStart(2, '0')}>{"별리" + (index + 1)}</option>
                                         ))}
                                     </select>
                                 </div>
