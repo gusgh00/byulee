@@ -377,7 +377,7 @@ export default function Home() {
                   <span className="DOL default_text control_name">테마</span>
                   <select className="DOL default_text control_input" onChange={(event) => handleChangeTheme(event)} value={selectedThemeIdx}>
                     {[...Array(themeCnt)].map((item, index) => (
-                        <option key={index} value={index + 1}>{"테마" + (index + 1)}</option>
+                        <option key={index} value={index + 1} className={"theme_dummy" + (index + 1).toString().padStart(2, '0')}>{"테마" + (index + 1)}</option>
                     ))}
                   </select>
                 </div>

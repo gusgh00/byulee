@@ -94,87 +94,86 @@
                     font-weight: 700;
                 }
             }
-        }
-
-        & .schedule_01 {
-            background: url("../../img/background/schedule01.png");
-            .content_section {
-                .avatar_section {
-                    .date_section {
-                        .week_date {
-                            color: #ed6496;
+            &.schedule_01 {
+                background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/schedule01.png");
+                .content_section {
+                    .avatar_section {
+                        .date_section {
+                            .week_date {
+                                color: #ed6496;
+                            }
                         }
                     }
                 }
             }
-        }
-        & .schedule_02 {
-            background: url("../../img/background/schedule02.png");
-            .content_section {
-                .avatar_section {
-                    .date_section {
-                        .week_date {
-                            color: #7874bc;
+            &.schedule_02 {
+                background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/schedule02.png");
+                .content_section {
+                    .avatar_section {
+                        .date_section {
+                            .week_date {
+                                color: #7874bc;
+                            }
                         }
                     }
                 }
             }
-        }
-        & .schedule_03 {
-            background: url("../../img/background/schedule03.png");
-            .content_section {
-                .avatar_section {
-                    .date_section {
-                        .week_date {
-                            color: #92b5ee;
+            &.schedule_03 {
+                background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/schedule03.png");
+                .content_section {
+                    .avatar_section {
+                        .date_section {
+                            .week_date {
+                                color: #92b5ee;
+                            }
                         }
                     }
                 }
             }
-        }
-        & .schedule_04 {
-            background: url("../../img/background/schedule04.png");
-            .content_section {
-                .avatar_section {
-                    .date_section {
-                        .week_date {
-                            color: #be9fe5;
+            &.schedule_04 {
+                background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/schedule04.png");
+                .content_section {
+                    .avatar_section {
+                        .date_section {
+                            .week_date {
+                                color: #be9fe5;
+                            }
                         }
                     }
                 }
             }
-        }
-        & .schedule_05 {
-            background: url("../../img/background/schedule05.png");
-            .content_section {
-                .avatar_section {
-                    .date_section {
-                        .week_date {
-                            color: #d883a9;
+            &.schedule_05 {
+                background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/schedule05.png");
+                .content_section {
+                    .avatar_section {
+                        .date_section {
+                            .week_date {
+                                color: #d883a9;
+                            }
                         }
                     }
                 }
             }
-        }
-        & .schedule_06 {
-            background: url("../../img/background/schedule06.png");
-            .content_section {
-                .avatar_section {
-                    .date_section {
-                        .week_date {
-                            color: #b3dfbf;
+            &.schedule_06 {
+                background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/schedule06.png");
+                .content_section {
+                    .avatar_section {
+                        .date_section {
+                            .week_date {
+                                color: #b3dfbf;
+                            }
                         }
                     }
                 }
             }
-        }
-        & .schedule_07 {
-            background: url("../../img/background/schedule07.png");
-            .content_section {
-                .avatar_section {
-                    .date_section {
-                        .week_date {
-                            color: #9889e6;
+            &.schedule_07 {
+                background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/schedule07.png");
+                .content_section {
+                    .avatar_section {
+                        .date_section {
+                            .week_date {
+                                color: #9889e6;
+                            }
                         }
                     }
                 }
@@ -397,6 +396,28 @@
                         background-size: 1rem;
                         &:focus {
                             background-image: url("../../img/etc/arrow_up_icon.png");
+                        }
+
+                        .theme_dummy01 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/schedule01.png");
+                        }
+                        .theme_dummy02 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/schedule02.png");
+                        }
+                        .theme_dummy03 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/schedule03.png");
+                        }
+                        .theme_dummy04 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/schedule04.png");
+                        }
+                        .theme_dummy05 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/schedule05.png");
+                        }
+                        .theme_dummy06 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/schedule06.png");
+                        }
+                        .theme_dummy07 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/schedule07.png");
                         }
                     }
                 }

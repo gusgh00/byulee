@@ -60,7 +60,7 @@
             }
         }
         & .banner_01 {
-            background: url("../../img/background/banner01.png");
+            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/banner01.png");
             .content_section {
                 .banner_section {
                     .banner_text {
@@ -72,7 +72,7 @@
             }
         }
         & .banner_02 {
-            background: url("../../img/background/banner02.png");
+            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/banner02.png");
             .content_section {
                 .banner_section {
                     .banner_text {
@@ -84,7 +84,7 @@
             }
         }
         & .banner_03 {
-            background: url("../../img/background/banner03.png");
+            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/banner03.png");
             .content_section {
                 .banner_section {
                     .banner_text {
@@ -96,7 +96,7 @@
             }
         }
         & .banner_04 {
-            background: url("../../img/background/banner04.png");
+            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/banner04.png");
             .content_section {
                 .banner_section {
                     .banner_text {
@@ -108,7 +108,7 @@
             }
         }
         & .banner_05 {
-            background: url("../../img/background/banner05.png");
+            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/banner05.png");
             .content_section {
                 .banner_section {
                     .banner_text {
@@ -120,7 +120,7 @@
             }
         }
         & .banner_06 {
-            background: url("../../img/background/banner06.png");
+            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/banner06.png");
             .content_section {
                 .banner_section {
                     .banner_text {
@@ -244,6 +244,25 @@
                         background-size: 1rem;
                         &:focus {
                             background-image: url("../../img/etc/arrow_up_icon.png");
+                        }
+
+                        .theme_dummy01 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/banner01.png");
+                        }
+                        .theme_dummy02 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/banner02.png");
+                        }
+                        .theme_dummy03 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/banner03.png");
+                        }
+                        .theme_dummy04 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/banner04.png");
+                        }
+                        .theme_dummy05 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/banner05.png");
+                        }
+                        .theme_dummy06 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/banner06.png");
                         }
                     }
                 }
