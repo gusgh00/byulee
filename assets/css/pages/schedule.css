@@ -17,7 +17,7 @@
             position: relative;
             width: 660px;
             height: 660px;
-            box-shadow:  5px 5px 10px #a8a8a8;
+            box-shadow:  2px 2px 8px #606060;
 
             animation-name: shine_skeleton;
             animation-duration: 600ms;
@@ -28,7 +28,7 @@
             position: relative;
             width: 660px;
             height: 660px;
-            box-shadow:  5px 5px 10px #a8a8a8;
+            box-shadow:  2px 2px 8px #606060;
             .content_section {
                 margin-top: 100px;
                 width: 660px;
@@ -201,8 +201,7 @@
         height: calc(100vh - 64px - 80px);
         background: rgba(255, 255, 255, 0.5);
         backdrop-filter: blur(30);
-
-        box-shadow:  44px 0 70px #f0f0f0;
+        border-right: solid 1px #efefef;
         .top_control {
             width: 550px;
             margin: 20px auto 0;
