@@ -14,6 +14,7 @@
         justify-content: center;
 
         .skeleton_img {
+            background: url("../../img/etc/skeleton_banner.webp");
             position: relative;
             width: 720px;
             height: 150px;
@@ -57,76 +58,75 @@
                     font-weight: 700;
                 }
             }
-
-            &.banner_01 {
-                background: url("../../img/background/banner01.png");
-                .content_section {
-                    .banner_section {
-                        .banner_text {
-                            color: #d6c7f1;
-                            -webkit-text-stroke-width: 1px;
-                            -webkit-text-stroke-color: #fff;
-                        }
+        }
+        & .banner_01 {
+            background: url("../../img/background/banner01.png");
+            .content_section {
+                .banner_section {
+                    .banner_text {
+                        color: #d6c7f1;
+                        -webkit-text-stroke-width: 1px;
+                        -webkit-text-stroke-color: #fff;
                     }
                 }
             }
-            &.banner_02 {
-                background: url("../../img/background/banner02.png");
-                .content_section {
-                    .banner_section {
-                        .banner_text {
-                            color: #cad4ef;
-                            -webkit-text-stroke-width: 1px;
-                            -webkit-text-stroke-color: #fff;
-                        }
+        }
+        & .banner_02 {
+            background: url("../../img/background/banner02.png");
+            .content_section {
+                .banner_section {
+                    .banner_text {
+                        color: #cad4ef;
+                        -webkit-text-stroke-width: 1px;
+                        -webkit-text-stroke-color: #fff;
                     }
                 }
             }
-            &.banner_03 {
-                background: url("../../img/background/banner03.png");
-                .content_section {
-                    .banner_section {
-                        .banner_text {
-                            color: #d87c4d;
-                            -webkit-text-stroke-width: 1px;
-                            -webkit-text-stroke-color: #fff;
-                        }
+        }
+        & .banner_03 {
+            background: url("../../img/background/banner03.png");
+            .content_section {
+                .banner_section {
+                    .banner_text {
+                        color: #d87c4d;
+                        -webkit-text-stroke-width: 1px;
+                        -webkit-text-stroke-color: #fff;
                     }
                 }
             }
-            &.banner_04 {
-                background: url("../../img/background/banner04.png");
-                .content_section {
-                    .banner_section {
-                        .banner_text {
-                            color: #cfb7a3;
-                            -webkit-text-stroke-width: 1px;
-                            -webkit-text-stroke-color: #fff;
-                        }
+        }
+        & .banner_04 {
+            background: url("../../img/background/banner04.png");
+            .content_section {
+                .banner_section {
+                    .banner_text {
+                        color: #cfb7a3;
+                        -webkit-text-stroke-width: 1px;
+                        -webkit-text-stroke-color: #fff;
                     }
                 }
             }
-            &.banner_05 {
-                background: url("../../img/background/banner05.png");
-                .content_section {
-                    .banner_section {
-                        .banner_text {
-                            color: #b8dccb;
-                            -webkit-text-stroke-width: 1px;
-                            -webkit-text-stroke-color: #fff;
-                        }
+        }
+        & .banner_05 {
+            background: url("../../img/background/banner05.png");
+            .content_section {
+                .banner_section {
+                    .banner_text {
+                        color: #b8dccb;
+                        -webkit-text-stroke-width: 1px;
+                        -webkit-text-stroke-color: #fff;
                     }
                 }
             }
-            &.banner_06 {
-                background: url("../../img/background/banner06.png");
-                .content_section {
-                    .banner_section {
-                        .banner_text {
-                            color: #e1c1d2;
-                            -webkit-text-stroke-width: 1px;
-                            -webkit-text-stroke-color: #fff;
-                        }
+        }
+        & .banner_06 {
+            background: url("../../img/background/banner06.png");
+            .content_section {
+                .banner_section {
+                    .banner_text {
+                        color: #e1c1d2;
+                        -webkit-text-stroke-width: 1px;
+                        -webkit-text-stroke-color: #fff;
                     }
                 }
             }

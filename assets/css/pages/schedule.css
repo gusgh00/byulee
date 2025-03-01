@@ -13,6 +13,7 @@
         align-items: center;
         justify-content: center;
         .skeleton_img {
+            background: url("../../img/etc/skeleton_schedule.webp");
             position: relative;
             width: 660px;
             height: 660px;
@@ -28,17 +29,8 @@
             width: 660px;
             height: 660px;
             box-shadow:  5px 5px 10px #a8a8a8;
-            .title_section {
-                width: 100%;
-                height: 100px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                .image_title {
-                    font-size: 50px;
-                }
-            }
             .content_section {
+                margin-top: 100px;
                 width: 660px;
                 height: 560px;
                 display: flex;
@@ -102,87 +94,87 @@
                     font-weight: 700;
                 }
             }
+        }
 
-            &.schedule_01 {
-                background: url("../../img/background/schedule01.png");
-                .content_section {
-                    .avatar_section {
-                        .date_section {
-                            .week_date {
-                                color: #ed6496;
-                            }
+        & .schedule_01 {
+            background: url("../../img/background/schedule01.png");
+            .content_section {
+                .avatar_section {
+                    .date_section {
+                        .week_date {
+                            color: #ed6496;
                         }
                     }
                 }
             }
-            &.schedule_02 {
-                background: url("../../img/background/schedule02.png");
-                .content_section {
-                    .avatar_section {
-                        .date_section {
-                            .week_date {
-                                color: #7874bc;
-                            }
+        }
+        & .schedule_02 {
+            background: url("../../img/background/schedule02.png");
+            .content_section {
+                .avatar_section {
+                    .date_section {
+                        .week_date {
+                            color: #7874bc;
                         }
                     }
                 }
             }
-            &.schedule_03 {
-                background: url("../../img/background/schedule03.png");
-                .content_section {
-                    .avatar_section {
-                        .date_section {
-                            .week_date {
-                                color: #92b5ee;
-                            }
+        }
+        & .schedule_03 {
+            background: url("../../img/background/schedule03.png");
+            .content_section {
+                .avatar_section {
+                    .date_section {
+                        .week_date {
+                            color: #92b5ee;
                         }
                     }
                 }
             }
-            &.schedule_04 {
-                background: url("../../img/background/schedule04.png");
-                .content_section {
-                    .avatar_section {
-                        .date_section {
-                            .week_date {
-                                color: #be9fe5;
-                            }
+        }
+        & .schedule_04 {
+            background: url("../../img/background/schedule04.png");
+            .content_section {
+                .avatar_section {
+                    .date_section {
+                        .week_date {
+                            color: #be9fe5;
                         }
                     }
                 }
             }
-            &.schedule_05 {
-                background: url("../../img/background/schedule05.png");
-                .content_section {
-                    .avatar_section {
-                        .date_section {
-                            .week_date {
-                                color: #d883a9;
-                            }
+        }
+        & .schedule_05 {
+            background: url("../../img/background/schedule05.png");
+            .content_section {
+                .avatar_section {
+                    .date_section {
+                        .week_date {
+                            color: #d883a9;
                         }
                     }
                 }
             }
-            &.schedule_06 {
-                background: url("../../img/background/schedule06.png");
-                .content_section {
-                    .avatar_section {
-                        .date_section {
-                            .week_date {
-                                color: #b3dfbf;
-                            }
+        }
+        & .schedule_06 {
+            background: url("../../img/background/schedule06.png");
+            .content_section {
+                .avatar_section {
+                    .date_section {
+                        .week_date {
+                            color: #b3dfbf;
                         }
                     }
                 }
             }
-            &.schedule_07 {
-                background: url("../../img/background/schedule07.png");
-                .content_section {
-                    .avatar_section {
-                        .date_section {
-                            .week_date {
-                                color: #9889e6;
-                            }
+        }
+        & .schedule_07 {
+            background: url("../../img/background/schedule07.png");
+            .content_section {
+                .avatar_section {
+                    .date_section {
+                        .week_date {
+                            color: #9889e6;
                         }
                     }
                 }

@@ -8,7 +8,6 @@ import Byulee01 from "@img/avatar/byulee01.png"
 import Byulee02 from "@img/avatar/byulee02.png"
 import Byulee03 from "@img/avatar/byulee03.png"
 import Byulee04 from "@img/avatar/byulee04.png"
-import Skeleton from "@img/etc/skeleton_schedule.webp"
 import dayjs from "dayjs";
 import "react-datepicker/dist/react-datepicker.css";
 import {FaRandom, FaRegCalendar} from "react-icons/fa";
@@ -263,35 +262,29 @@ export default function Home() {
       <div className="main_inner">
         <div className="schedule_main">
           <div className="schedule_image">
-            {skeletonLoading ?
-                <Image src={Skeleton} alt="skeleton_schedule" className="skeleton_img"/>
-                :
-                <div id="schedule-image" className={"image_section " + selectedTheme}>
-                  <div className="title_section">
-                    <span className="font_01 image_title"></span>
-                  </div>
-                  <div className="content_section">
-                    <div className="schedule_section">
-                      {weekData.map((item, index) => (
-                          <div className="week_section" key={index}>
-                            <span className={"default_text week_title " + selectedFont}>{item.week}</span>
-                            <span className={"default_text week_content " + selectedFont}>{item.content}</span>
-                            <span className={"default_text week_time " + selectedFont}>{item.rest_status ? "휴방" : (item.am_or_pm === 0 ? "오전 " : "오후 ") + item.time + "시"}</span>
-                          </div>
-                      ))}
-                    </div>
-                    <div className="avatar_section">
-                      <div className="date_section">
-                        <span className={"default_text week_date " + selectedFont}>{dayjs(startDate).format("M/D") + "~" + dayjs(endDate).format("M/D")}</span>
+            <div className={"skeleton_img " + (skeletonLoading ? "" : "display_none")}></div>
+            <div id="schedule-image" className={(!skeletonLoading ? "image_section " : "display_none ") + selectedTheme}>
+              <div className="content_section">
+                <div className="schedule_section">
+                  {weekData.map((item, index) => (
+                      <div className="week_section" key={index}>
+                        <span className={"default_text week_title " + selectedFont}>{item.week}</span>
+                        <span className={"default_text week_content " + selectedFont}>{item.content}</span>
+                        <span className={"default_text week_time " + selectedFont}>{item.rest_status ? "휴방" : (item.am_or_pm === 0 ? "오전 " : "오후 ") + item.time + "시"}</span>
                       </div>
-                      <Image src={selectedAvatar} alt="avatar" className="avatar_img"/>
-                    </div>
-                  </div>
-                  <div className="watermark_section">
-                    <span className="HASD-500 default_text">Created by HYNO. Source License : Designed By Freepik.</span>
-                  </div>
+                  ))}
                 </div>
-            }
+                <div className="avatar_section">
+                  <div className="date_section">
+                    <span className={"default_text week_date " + selectedFont}>{dayjs(startDate).format("M/D") + "~" + dayjs(endDate).format("M/D")}</span>
+                  </div>
+                  <Image src={selectedAvatar} alt="avatar" className="avatar_img"/>
+                </div>
+              </div>
+              <div className="watermark_section">
+                <span className="HASD-500 default_text">Created by HYNO. Source License : Designed By Freepik.</span>
+              </div>
+            </div>
           </div>
           <div className="schedule_control">
             <div className="top_control">

@@ -5,7 +5,6 @@ import * as htmlToImage from 'html-to-image';
 import Byulee01 from "@img/avatar/avatar01.png"
 import Byulee02 from "@img/avatar/avatar02.png"
 import Byulee03 from "@img/avatar/avatar03.png"
-import Skeleton from "@img/etc/skeleton_banner.webp"
 import {FaRandom} from "react-icons/fa";
 import {RiResetLeftFill} from "react-icons/ri";
 import {IoIosSave} from "react-icons/io";
@@ -136,10 +135,8 @@ export default function Banner() {
             <div className="main_inner">
                 <div className="banner_main">
                     <div className="banner_image">
-                        {skeletonLoading ?
-                            <Image src={Skeleton} alt="skeleton_schedule" className="skeleton_img"/>
-                            :
-                            <div id="banner-image" className={"image_section " + selectedTheme}>
+                        <div className={"skeleton_img " + (skeletonLoading ? "" : "display_none")}></div>
+                        <div id="banner-image" className={(!skeletonLoading ? "image_section " : "display_none ") + selectedTheme}>
                             <div className="content_section">
                                 <div className="banner_section">
                                     <span className={"default_text banner_text " + selectedFont}>별리의</span>
@@ -155,7 +152,6 @@ export default function Banner() {
                                 <span className="HASD-500 default_text">Created by HYNO. Source License : Designed By Freepik.</span>
                             </div>
                         </div>
-                        }
                     </div>
                     <div className="banner_control">
                         <div className="top_control">
