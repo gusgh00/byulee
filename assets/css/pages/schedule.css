@@ -110,6 +110,33 @@
                     font-weight: 700;
                 }
             }
+            &.schedule_00 {
+                background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/schedule00.png");
+                .content_section {
+                    .schedule_section {
+                        .week_section {
+                            .week_title {
+                            }
+                            .week_content {
+                                color: #000;
+                            }
+                            .week_time {
+                                color: #000;
+                            }
+                        }
+                    }
+                    .avatar_section {
+                        .date_section {
+                            .week_date {
+                                color: red;
+                            }
+                        }
+                        .avatar_img {
+                            background: transparent;
+                        }
+                    }
+                }
+            }
             &.schedule_01 {
                 background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/schedule01.png");
                 .content_section {
@@ -242,6 +269,13 @@
 
                         color: #ff6161;
                         border: solid 1px #ff6161;
+                    }
+                    &:disabled {
+                        .reset_icon, .save_icon, .random_icon, .cookie_icon {
+                            color: #E8E8E8;
+                        }
+                        border: solid 1px #E8E8E8;
+                        color: #E8E8E8;
                     }
                 }
             }

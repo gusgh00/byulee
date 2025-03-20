@@ -90,6 +90,8 @@ export default function Home() {
 
   const [cookies, setCookie] = useCookies(['weeks']);
 
+  const [aprilFoolStatus, setAprilFoolStatus] = useState(false)
+
   const changeWeekContent = (value: string, index: number) => {
     setWeekData(weekData.map((item, idx: number) => {
       if (idx === index) {
@@ -159,12 +161,15 @@ export default function Home() {
   const clearScheduleImage = () => {
     setSkeletonLoading(true)
     setWeekData(weekArr)
-    setSelectedAvatarIdx(1)
-    setSelectedThemeIdx(1)
-    setSelectedFontIdx(1)
-    setSelectedAvatar("avatar_01")
-    setSelectedTheme("schedule_01")
-    setSelectedFont("font_01")
+
+    if (!aprilFoolStatus) {
+      setSelectedAvatarIdx(1)
+      setSelectedThemeIdx(1)
+      setSelectedFontIdx(1)
+      setSelectedAvatar("avatar_01")
+      setSelectedTheme("schedule_01")
+      setSelectedFont("font_01")
+    }
 
     const day = dayjs().startOf('week')
     const tempStartDate = day.add(1, "day").toDate()
@@ -231,6 +236,31 @@ export default function Home() {
     setTimeout(() => setSkeletonLoading(false), time)
   }
 
+  useEffect(() => {
+    const startOfWeek = dayjs(startDate).startOf('week'); // 주의 시작일 (월요일)
+    const datesInWeek = Array.from({ length: 7 }, (_, i) => startOfWeek.add(i, 'day'));
+
+    const includesAprilFirst = datesInWeek.some(date => date.date() === 1 && date.month() === 3);
+
+    setAprilFoolStatus(includesAprilFirst)
+  }, [dateRange]);
+
+  useEffect(() => {
+    if (aprilFoolStatus) {
+      console.log("true true true true true true true true")
+      setSelectedTheme("schedule_00")
+      setSelectedThemeIdx(0)
+      setSelectedFont("font_00")
+      setSelectedFontIdx(0)
+    } else {
+      console.log("false.")
+      setSelectedTheme("schedule_01")
+      setSelectedThemeIdx(1)
+      setSelectedFont("font_01")
+      setSelectedFontIdx(1)
+    }
+  }, [aprilFoolStatus]);
+
   return (
     <div id="main_content">
       <div className="main_inner">
@@ -263,7 +293,7 @@ export default function Home() {
           <div className="schedule_control">
             <div className="top_control">
               <div className="btn_control">
-                <button className="DOL default_text random_btn" onClick={() => changeRandomImage()}>
+                <button className="DOL default_text random_btn" onClick={() => changeRandomImage()} disabled={aprilFoolStatus}>
                   <FaRandom className="random_icon default_text"/>
                   랜덤
                 </button>
@@ -342,7 +372,7 @@ export default function Home() {
               <div className="select_section">
                 <div className="control_section">
                   <span className="DOL default_text control_name">아바타</span>
-                  <select className="DOL default_text control_input" onChange={(event) => handleChangeAvatar(event)} value={selectedAvatarIdx}>
+                  <select className="DOL default_text control_input" onChange={(event) => handleChangeAvatar(event)} value={selectedAvatarIdx} disabled={aprilFoolStatus}>
                     {[...Array(avatarCnt)].map((item, index) => (
                         <option key={index} value={index + 1} className={"avatar_dummy" + (index + 1).toString().padStart(2, '0')}>{"별리" + (index + 1)}</option>
                     ))}
@@ -351,7 +381,7 @@ export default function Home() {
 
                 <div className="control_section">
                   <span className="DOL default_text control_name">테마</span>
-                  <select className="DOL default_text control_input" onChange={(event) => handleChangeTheme(event)} value={selectedThemeIdx}>
+                  <select className="DOL default_text control_input" onChange={(event) => handleChangeTheme(event)} value={selectedThemeIdx} disabled={aprilFoolStatus}>
                     {[...Array(themeCnt)].map((item, index) => (
                         <option key={index} value={index + 1} className={"theme_dummy" + (index + 1).toString().padStart(2, '0')}>{"테마" + (index + 1)}</option>
                     ))}
@@ -360,7 +390,7 @@ export default function Home() {
 
                 <div className="control_section">
                   <span className="DOL default_text control_name">폰트</span>
-                  <select className={"default_text control_input " + selectedFont} onChange={(event) => handleChangeFont(event)} value={selectedFontIdx}>
+                  <select className={"default_text control_input " + selectedFont} onChange={(event) => handleChangeFont(event)} value={selectedFontIdx} disabled={aprilFoolStatus}>
                     {[...Array(fontCnt)].map((item, index) => (
                         <option key={index} value={index + 1} className={"font_" + (index + 1).toString().padStart(2, '0')}>{"폰트" + (index + 1)}</option>
                     ))}
