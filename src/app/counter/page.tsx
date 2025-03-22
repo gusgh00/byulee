@@ -33,7 +33,7 @@ export default function Counter() {
         }
 
         const share = Math.floor(differenceInDays(date, TBroadcastDay) / 100)
-        let cntTime = 0
+        let cntTime: number
         if (differenceInDays(date, TBroadcastDay) % 100 !== 0) {
             cntTime = share + 1
         } else {
