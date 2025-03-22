@@ -1,0 +1,49 @@
+.counter_main {
+    width: 100%;
+    height: calc(100vh - 64px - 60px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 100px;
+    .counter_section {
+        display: flex;
+        justify-content: space-between;
+        .counter_card {
+            display: flex;
+            flex-direction: column;
+
+            width: 380px;
+            height: 170px;
+            padding: 20px 40px;
+
+            border-radius: 40px;
+
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(30);
+            border: solid 2px #dfdfdf;
+            .counter_name {
+                font-size: 20px;
+                line-height: 30px;
+                text-align: left;
+            }
+            .counter_date {
+                font-size: 15px;
+                line-height: 20px;
+                text-align: left;
+            }
+            .counter_num {
+                font-size: 80px;
+                line-height: 90px;
+                text-align: center;
+            }
+
+            &.active {
+                border: solid 2px #ff6161;
+                .counter_num {
+                    color: #FF6161;
+                }
+            }
+        }
+    }
+}
