@@ -18,9 +18,14 @@ const Navigation = () => {
                         <span className={usePathname() === "/banner" ? "font_01 navigation_text navigation_text_selected" : "font_01 navigation_text"}>하단 배너</span>
                     </div>
                 </Link>
+                <Link href={"/profile"}>
+                    <div>
+                        <span className={usePathname() === "/profile" ? "font_01 navigation_text navigation_text_selected" : "font_01 navigation_text"}>프로필 이미지</span>
+                    </div>
+                </Link>
                 <Link href={"/counter"}>
                     <div>
-                        <span className={usePathname() === "/counter" ? "font_01 navigation_text navigation_text_selected" : "font_01 navigation_text"}>New 디데이 카운트</span>
+                        <span className={usePathname() === "/counter" ? "font_01 navigation_text navigation_text_selected" : "font_01 navigation_text"}>디데이 카운트</span>
                     </div>
                 </Link>
             </div>

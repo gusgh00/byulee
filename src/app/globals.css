@@ -4,6 +4,7 @@
 @import "@css/pages/main.css";
 @import "@css/pages/schedule.css";
 @import "@css/pages/banner.css";
+@import "@css/pages/profile.css";
 @import "@css/pages/counter.css";
 
 @tailwind base;

@@ -1,0 +1,420 @@
+.profile_main {
+    width: 100%;
+    display: flex;
+
+    .profile_image {
+        width: 900px;
+        height: calc(100vh - 64px - 60px);
+
+        background: rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(30);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+
+        .modify_profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            .modify_avatar {
+                .skeleton_avatar_img {
+                    background: url("../../img/etc/skeleton_profile_avatar.webp");
+                    position: relative;
+                    width: 420px;
+                    height: 420px;
+                    box-shadow:  2px 2px 8px #606060;
+
+                    animation-name: shine_skeleton;
+                    animation-duration: 600ms;
+                    animation-iteration-count: infinite;
+                }
+                .avatar_section {
+                    position: relative;
+                    width: 420px;
+                    height: 420px;
+                    .img_section {
+                        width: 420px;
+                        height: 420px;
+                        .avatar_img {
+                            width: 420px;
+                            height: 420px;
+                            &.avatar_01 {
+                                background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/avatar/frame01.png");
+                                background-size: cover;
+                            }
+                            &.avatar_02 {
+                                background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/avatar/frame02.png");
+                                background-size: cover;
+                            }
+                            &.avatar_03 {
+                                background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/avatar/frame03.png");
+                                background-size: cover;
+                            }
+                            &.avatar_04 {
+                                background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/avatar/frame04.png");
+                                background-size: cover;
+                            }
+                            &.avatar_05 {
+                                background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/avatar/frame05.png");
+                                background-size: cover;
+                            }
+                        }
+                    }
+                    .watermark_section {
+                        position: absolute;
+                        bottom: 0;
+                        left: 5px;
+                        & span {
+                            font-size: 10px;
+                            font-weight: 700;
+                        }
+                    }
+                }
+            }
+            .modify_nickname {
+                .skeleton_nickname_img {
+                    background: url("../../img/etc/skeleton_profile_nickname.webp");
+                    position: relative;
+                    width: 420px;
+                    height: 420px;
+                    box-shadow:  2px 2px 8px #606060;
+
+                    animation-name: shine_skeleton;
+                    animation-duration: 600ms;
+                    animation-iteration-count: infinite;
+                }
+                .nickname_section {
+                    position: relative;
+                    width: 420px;
+                    height: 420px;
+                    .profile_section {
+                        width: 420px;
+                        height: 360px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        .profile_title {
+                            height: 60px;
+                            font-size: 60px;
+                        }
+                        .profile_text {
+                            font-size: 140px;
+                        }
+                    }
+                    .watermark_section {
+                        position: absolute;
+                        bottom: 0;
+                        left: 5px;
+                        & span {
+                            font-size: 10px;
+                            font-weight: 700;
+                        }
+                    }
+                }
+            }
+
+            .modify_section {
+                box-shadow:  2px 2px 8px #606060;
+                &.profile_01 {
+                    background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/profile01.png");
+                    background-size: cover;
+                    .profile_section {
+                        .profile_text, .profile_title {
+                            color: #ddbedc;
+                            text-shadow: 0 0 15px #ddbedc;
+                            -webkit-text-stroke-width: 1px;
+                            -webkit-text-stroke-color: #fff;
+                        }
+                    }
+                }
+                &.profile_02 {
+                    background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/profile02.png");
+                    background-size: cover;
+                    .profile_section {
+                        .profile_text, .profile_title {
+                            color: #fcd83c;
+                            text-shadow: 0 0 15px #fcd83c;
+                            -webkit-text-stroke-width: 1px;
+                            -webkit-text-stroke-color: #fff;
+                        }
+                    }
+                }
+                &.profile_03 {
+                    background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/profile03.png");
+                    background-size: cover;
+                    .profile_section {
+                        .profile_text, .profile_title {
+                            color: #f5a7b7;
+                            text-shadow: 0 0 15px #f5a7b7;
+                            -webkit-text-stroke-width: 1px;
+                            -webkit-text-stroke-color: #fff;
+                        }
+                    }
+                }
+                &.profile_04 {
+                    background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/profile04.png");
+                    background-size: cover;
+                    .profile_section {
+                        .profile_text, .profile_title {
+                            color: #bef3a2;
+                            text-shadow: 0 0 15px #bef3a2;
+                            -webkit-text-stroke-width: 1px;
+                            -webkit-text-stroke-color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+        .result_profile {
+            .skeleton_result_img {
+                background: url("../../img/etc/skeleton_profile_result.webp");
+                background-size: cover;
+                position: relative;
+                width: 300px;
+                height: 300px;
+                box-shadow:  2px 2px 8px #606060;
+
+                animation-name: shine_skeleton;
+                animation-duration: 600ms;
+                animation-iteration-count: infinite;
+            }
+            .skeleton_empty_img {
+                background: url("../../img/etc/skeleton_profile_empty.webp");
+                background-size: cover;
+                position: relative;
+                width: 300px;
+                height: 300px;
+                box-shadow:  2px 2px 8px #606060;
+
+                animation-name: shine_skeleton;
+                animation-duration: 1200ms;
+                animation-iteration-count: infinite;
+            }
+            .image_section {
+                position: relative;
+                width: 300px;
+                height: 300px;
+                box-shadow:  2px 2px 8px #606060;
+            }
+        }
+    }
+    .profile_control {
+        width: 400px;
+        height: calc(100vh - 64px - 60px);
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(30);
+        border-right: solid 1px #efefef;
+        .top_control {
+            width: 370px;
+            margin: 20px auto 0;
+            display: flex;
+            justify-content: space-between;
+            .btn_control {
+                display: flex;
+                gap: 20px;
+
+                .reset_btn, .save_btn, .random_btn {
+                    height: 40px;
+                    border-radius: 20px;
+                    padding: 0 20px;
+
+                    gap: 8px;
+
+                    border: solid 1px #3c3c3c;
+
+                    display: flex;
+                    align-items: center;
+
+                    font-size: 16px;
+                    transition: 0.2s;
+
+                    .reset_icon, .save_icon, .random_icon {
+                        width: 18px;
+                        height: 18px;
+                        transition: 0.2s;
+                    }
+
+                    &:hover {
+                        .reset_icon, .save_icon, .random_icon {
+                            color: #ff6161;
+                        }
+
+                        color: #ff6161;
+                        border: solid 1px #ff6161;
+                    }
+
+                    &:disabled {
+                        .reset_icon, .save_icon, .random_icon {
+                            color: #dedede;
+                        }
+
+                        color: #dedede;
+                        border: solid 1px #dedede;
+                    }
+                }
+            }
+        }
+        .name_control {
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            width: 370px;
+            height: 260px;
+            gap: 2px;
+            margin: 80px auto 20px;
+            .input_title {
+                font-size: 12px;
+            }
+            .control_input {
+                height: 40px;
+                padding: 0 10px;
+                font-size: 20px;
+                outline: none;
+
+                background: #fff;
+                border-radius: 20px;
+                border: solid 1px #E8E8E8;
+            }
+        }
+        .render_control {
+            display: flex;
+            justify-content: center;
+            width: 370px;
+            height: 180px;
+            gap: 2px;
+            margin: 0 auto 40px;
+            .btn_control {
+                .render_btn {
+                    width: 370px;
+                    height: 40px;
+                    border-radius: 20px;
+                    padding: 0 20px;
+
+                    gap: 8px;
+
+                    border: solid 1px #3c3c3c;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    font-size: 16px;
+                    transition: 0.2s;
+                    .render_icon {
+                        width: 18px;
+                        height: 18px;
+                        transition: 0.2s;
+                    }
+
+                    &:hover {
+                        .render_icon {
+                            color: #ff6161;
+                        }
+
+                        color: #ff6161;
+                        border: solid 1px #ff6161;
+                    }
+
+                    &:disabled {
+                        .render_icon {
+                            color: #33B2DF;
+                        }
+
+                        color: #33B2DF;
+                        border: solid 1px #33B2DF;
+                    }
+
+                    &.rendered {
+                        .render_icon {
+                            color: #78ce4d;
+                        }
+
+                        color: #78ce4d;
+                        border: solid 1px #78ce4d;
+                    }
+                }
+            }
+        }
+        .img_control {
+            display: flex;
+            justify-content: end;
+            gap: 20px;
+            width: 370px;
+            margin: 0 auto 10px;
+
+            .select_section {
+                display: flex;
+                gap: 20px;
+                .control_section {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2px;
+                    .control_name {
+                        font-size: 12px;
+                    }
+                    .control_input {
+                        width: 100px;
+                        height: 40px;
+                        border-radius: 20px;
+
+                        border: solid 1px #E8E8E8;
+
+                        display: flex;
+                        align-items: center;
+
+                        font-size: 16px;
+                        padding: 0 10px;
+
+                        appearance: none;
+
+                        outline: none;
+
+                        cursor: pointer;
+
+                        background-image: url("../../img/etc/arrow_down_icon.png");
+                        background-repeat: no-repeat;
+                        background-position: right 10px center;
+                        background-size: 1rem;
+                        &:focus {
+                            background-image: url("../../img/etc/arrow_up_icon.png");
+                        }
+
+                        .theme_dummy01 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/profile01.png");
+                        }
+                        .theme_dummy02 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/profile02.png");
+                        }
+                        .theme_dummy03 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/profile03.png");
+                        }
+                        .theme_dummy04 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/background/profile04.png");
+                        }
+
+                        .avatar_dummy01 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/avatar/frame01.png");
+                        }
+                        .avatar_dummy02 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/avatar/frame02.png");
+                        }
+                        .avatar_dummy03 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/avatar/frame03.png");
+                        }
+                        .avatar_dummy04 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/avatar/frame04.png");
+                        }
+                        .avatar_dummy05 {
+                            background: url("https://raw.githubusercontent.com/gusgh00/byulee/refs/heads/main/assets/img/avatar/frame05.png");
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

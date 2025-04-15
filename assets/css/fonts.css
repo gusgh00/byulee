@@ -45,6 +45,13 @@
     src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-dEb.eot?#iefix) format("embedded-opentype"), url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-dEb.woff) format("woff"), url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-dEb.ttf) format("truetype");
 }
 
+@font-face {
+    font-family: 'LOTTERIACHAB';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/LOTTERIACHAB.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .DOL {
     font-family: 'Dolbomche_R', sans-serif;
 }
@@ -77,6 +84,10 @@
 .HASD-500 {
     font-family: 'HakgyoansimSantteutdotumL', sans-serif;
     font-weight: 500;
+}
+
+.LOT {
+    font-family: 'LOTTERIACHAB', sans-serif;
 }
 
 .default_text {
