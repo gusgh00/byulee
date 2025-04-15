@@ -194,7 +194,7 @@ const RenderProfile = () => {
             })
 
             gif.on('progress', (progress: number) => {
-                setRenderStatus("GIF 생성 중(" + Math.floor(progress * 10) + "10)...")
+                setRenderStatus("GIF 생성 중(" + Math.floor(progress * 10) + "/10)...")
             });
 
             let seconds = 0
